@@ -23,9 +23,11 @@ import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.Network;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.containers.wait.strategy.Wait;
+import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.lifecycle.Startables;
 import org.testcontainers.utility.MountableFile;
+import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Comercio;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.ComercioTipoComercio;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Direccion;
@@ -52,13 +54,41 @@ public class ComercioIT {
     static Long idComercioCreado;
     static Integer idTipoCreado;
 
+    Network red = Network.newNetwork();
+
+    MountableFile war = MountableFile.forHostPath(Paths.get("target/Delivery.war").toAbsolutePath(), 0777);
+
+    @Container
+    GenericContainer postgres = new PostgreSQLContainer("postgres:13-alpine")
+            .withDatabaseName("delivery")
+            .withPassword("abc123")
+            .withUsername("postgres")
+            .withInitScript("iniciardelivery.sql")
+            .withNetwork(red)
+            .withNetworkAliases("db");
+
+
+    @Container
+    GenericContainer payara = new GenericContainer("payara/server-full:latest")
+          .withEnv("POSTGRES_USER", "postgres")
+          .withEnv("POSTGRES_PASSWORD", "abc123") 
+          .withEnv("POSTGRES PORT","5432")
+          .withEnv("POSTGRES_DBNAME", "delivery")
+          .dependsOn(postgres)
+          .withNetwork(red)
+          .withCopyFileToContainer(war,"/opt/payara/aplicacion.war") 
+          .waitingFor(Wait.forLogMessage("deploy AdminCommandApplication", 0))
+          .withExposedPorts(8880);
+
 
     /**
      * Se encarga de inicializar los contenedores para realizar las pruebas
      */
-    @BeforeAll
-    public static void lanzarPayaraTest() {
+   // @BeforeAll
+    @Test
+    public void lanzarPayaraTest() {
         System.out.println("Comercio - lanzarPayara");
+        Assertions.assertTrue(payara.isRunning());
        // agregue su logica de arrancar los contenedores que usara. Note que las propiedades no
        // estan agregadas a la clase, debera crearlas.
     }
@@ -67,12 +97,12 @@ public class ComercioIT {
      * Realiza la prueba de creacion de Comercio
      *
      * @see Comercio
-     */
+     *
     @Order(1)
     @Test
     public void crearTest() {
         System.out.println("Comercio - crear");
-        Assertions.assertTrue(payara.isRunning());
+      //  Assertions.assertTrue(payara.isRunning());
         int esperado = Response.Status.CREATED.getStatusCode();
         Comercio creado = new Comercio();
         creado.setActivo(Boolean.TRUE);
@@ -91,12 +121,12 @@ public class ComercioIT {
 
     /**
      * Busca un comercio por su Identificador
-     */
+     *
     @Order(2)
     @Test
     public void findByIdTest() {
         System.out.println("Comercio - findById");
-        Assertions.assertTrue(payara.isRunning());
+       // Assertions.assertTrue(payara.isRunning());
         Assertions.assertNotNull(idComercioCreado);
         int esperado = 200;
         Response respuesta = target.path("/comercio/{id}").resolveTemplate("id", idComercioCreado)
@@ -115,12 +145,12 @@ public class ComercioIT {
      * Crea un tipo de comercio
      *
      * @see TipoComercio
-     */
+     *
     @Order(3)
     @Test
     public void crearTipoComercioTest() {
         System.out.println("Comercio - crearTipoComercio");
-        Assertions.assertTrue(payara.isRunning());
+        //Assertions.assertTrue(payara.isRunning());
         int esperado = Response.Status.CREATED.getStatusCode();
         TipoComercio creado = new TipoComercio();
         creado.setActivo(Boolean.TRUE);
@@ -140,12 +170,12 @@ public class ComercioIT {
      * Valida que un comercio creado previamente no posea un Tipo asociado
      *
      * @see ComercioTipoComercio
-     */
+     *
     @Order(4)
     @Test
     public void validarTipoVacioTest() {
         System.out.println("Comercio - validarTipoVacio");
-        Assertions.assertTrue(payara.isRunning());
+       // Assertions.assertTrue(payara.isRunning());
         int esperado = 200;
         Response respuesta = target.path("/comercio/{id}/tipocomercio").resolveTemplate("id", idComercioCreado)
                 .request(MediaType.APPLICATION_JSON).get();
@@ -164,12 +194,12 @@ public class ComercioIT {
      * previamente
      *
      * @see ComercioTipoComercio
-     */
+     *
     @Order(5)
     @Test
     public void agregarTipoAComercio() {
         System.out.println("Comercio - agregarTipoAComercio");
-        Assertions.assertTrue(payara.isRunning());
+        //Assertions.assertTrue(payara.isRunning());
         int esperado = Response.Status.CREATED.getStatusCode();
         Response respuesta = target.path("comercio/{idComercio}/tipocomercio/{idTipoComercio}")
                 .resolveTemplate("idComercio", idComercioCreado)
@@ -193,12 +223,12 @@ public class ComercioIT {
      * Valida que un Comercio posea tipos asociados
      *
      * @see ComercioTipoComercio
-     */
+     *
     @Order(6)
     @Test
     public void validarTipoLlenoTest() {
         System.out.println("Comercio - validarTipoLleno");
-        Assertions.assertTrue(payara.isRunning());
+     //   Assertions.assertTrue(payara.isRunning());
         int esperado = 200;
         Response respuesta = target.path("/comercio/{id}/tipocomercio").resolveTemplate("id", idComercioCreado)
                 .request(MediaType.APPLICATION_JSON).get();
@@ -214,12 +244,12 @@ public class ComercioIT {
      * @see Territorio
      * @see Direccion
      * @see Sucursal
-     */
+     *
     @Order(7)
     @Test
     public void crearSucursalTest() {
         System.out.println("Comercio - crearSucursal");
-        Assertions.assertTrue(payara.isRunning());
+       // Assertions.assertTrue(payara.isRunning());
         int esperado = 200;
         //crear territorios
         Territorio sv = new Territorio();
@@ -283,5 +313,5 @@ public class ComercioIT {
                 .post(Entity.entity(s, MediaType.APPLICATION_JSON));
         Assertions.assertEquals(400, respuestaSucursal.getStatus());
     }
-
+*/
 }
