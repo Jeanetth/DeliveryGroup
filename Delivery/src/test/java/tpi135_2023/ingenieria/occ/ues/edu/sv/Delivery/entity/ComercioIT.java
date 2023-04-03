@@ -93,13 +93,13 @@ public class ComercioIT {
         System.out.println("Comercio - lanzarPayara");
         Assertions.assertTrue(payara.isRunning());
         Assertions.assertTrue(postgres.isRunning());
-       // cliente = ClientBuilder.newClient();
+        cliente = ClientBuilder.newClient();
         
         
-       // target = cliente.target("http://localhost:8080/aplicacion");
-       // Response respuesta = target.path("/hello")
-        //        .request(MediaType.APPLICATION_JSON).get();
-        //Assertions.assertEquals(200,respuesta.getStatus());
+        target = cliente.target("http://localhost:8080/aplicacion");
+        Response respuesta = target.path("/hello")
+                .request(MediaType.APPLICATION_JSON).get();
+        Assertions.assertEquals(200,respuesta.getStatus());
        // agregue su logica de arrancar los contenedores que usara. Note que las propiedades no
        // estan agregadas a la clase, debera crearlas.
     }
