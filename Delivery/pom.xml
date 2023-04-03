@@ -134,7 +134,11 @@
         <version>1.16.3</version>
             <scope>test</scope>
      </dependency>
-        
+        <dependency>
+            <groupId>jakarta.ws.rs</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
+            <version>3.0.0</version>
+            </dependency>    
     </dependencies>
     
      <build>

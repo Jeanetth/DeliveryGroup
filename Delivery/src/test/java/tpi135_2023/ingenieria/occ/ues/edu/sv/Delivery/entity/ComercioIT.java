@@ -4,6 +4,7 @@
  */
 package tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity;
 
+import jakarta.activation.DataSource;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.Entity;
@@ -54,41 +55,51 @@ public class ComercioIT {
     static Long idComercioCreado;
     static Integer idTipoCreado;
 
+
     Network red = Network.newNetwork();
 
-    MountableFile war = MountableFile.forHostPath(Paths.get("target/Delivery.war").toAbsolutePath(), 0777);
+    MountableFile war = MountableFile.forHostPath(Paths.get("target/Delivery-1.0.0-SNAPSHOT.war").toAbsolutePath(), 0777);
 
     @Container
     GenericContainer postgres = new PostgreSQLContainer("postgres:13-alpine")
             .withDatabaseName("delivery")
             .withPassword("abc123")
             .withUsername("postgres")
-            .withInitScript("iniciardelivery.sql")
+            .withInitScript("iniciarDelivery.sql")
             .withNetwork(red)
             .withNetworkAliases("db");
 
 
     @Container
-    GenericContainer payara = new GenericContainer("payara/server-full:latest")
+    GenericContainer payara = new GenericContainer("payara/server-full:6.2023.3-jdk17")
           .withEnv("POSTGRES_USER", "postgres")
           .withEnv("POSTGRES_PASSWORD", "abc123") 
-          .withEnv("POSTGRES PORT","5432")
+          .withEnv("POSTGRES_PORT","5432")
           .withEnv("POSTGRES_DBNAME", "delivery")
           .dependsOn(postgres)
           .withNetwork(red)
-          .withCopyFileToContainer(war,"/opt/payara/aplicacion.war") 
-          .waitingFor(Wait.forLogMessage("deploy AdminCommandApplication", 0))
-          .withExposedPorts(8880);
+          .withCopyFileToContainer(war,"/opt/payara/deployments/aplicacion.war") 
+          .waitingFor(Wait.forLogMessage(".*JMXStartupService has started JMXConnector on JMXService.*",1))
+          .withExposedPorts(8080);
 
-
+    
     /**
      * Se encarga de inicializar los contenedores para realizar las pruebas
      */
-   // @BeforeAll
+   // 
+
     @Test
     public void lanzarPayaraTest() {
         System.out.println("Comercio - lanzarPayara");
         Assertions.assertTrue(payara.isRunning());
+        Assertions.assertTrue(postgres.isRunning());
+       // cliente = ClientBuilder.newClient();
+        
+        
+       // target = cliente.target("http://localhost:8080/aplicacion");
+       // Response respuesta = target.path("/hello")
+        //        .request(MediaType.APPLICATION_JSON).get();
+        //Assertions.assertEquals(200,respuesta.getStatus());
        // agregue su logica de arrancar los contenedores que usara. Note que las propiedades no
        // estan agregadas a la clase, debera crearlas.
     }
