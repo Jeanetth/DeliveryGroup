@@ -121,26 +121,31 @@
             <artifactId>testcontainers</artifactId>
             <version>1.16.3</version>
             <scope>test</scope>
-     </dependency>
-     <dependency>
+        </dependency>
+        <dependency>
         <groupId>org.testcontainers</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>1.16.3</version>
             <scope>test</scope>
-     </dependency>
-     <dependency>
-        <groupId>org.testcontainers</groupId>
-        <artifactId>postgresql</artifactId>
-        <version>1.16.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>1.16.3</version>
             <scope>test</scope>
-     </dependency>
+        </dependency>
         <dependency>
             <groupId>jakarta.ws.rs</groupId>
             <artifactId>jakarta.ws.rs-api</artifactId>
-            <version>3.0.0</version>
-            </dependency>    
-    </dependencies>
-    
+            <version>3.1.0</version>
+            </dependency>
+        <dependency>
+            <groupId>fish.payara.extras</groupId>
+            <artifactId>payara-embedded-all</artifactId>
+            <version>6.2023.3</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>  
      <build>
         <plugins>
             <plugin>

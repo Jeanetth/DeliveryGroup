@@ -4,7 +4,7 @@
  */
 package tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity;
 
-import jakarta.activation.DataSource;
+
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.Entity;
@@ -13,13 +13,16 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.net.URI;
 import java.nio.file.Paths;
+import org.eclipse.persistence.internal.sessions.cdi.InjectionManager;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.runner.RunWith;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.Network;
 import org.testcontainers.containers.PostgreSQLContainer;
@@ -46,6 +49,7 @@ import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.TipoComercio;
  */
 @Testcontainers
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+//@RunWith(CdiRunner.class)
 public class ComercioIT {
 
     static String endpoint;
@@ -72,11 +76,11 @@ public class ComercioIT {
 
     @Container
     GenericContainer payara = new GenericContainer("payara/server-full:6.2023.3-jdk17")
-          .withEnv("POSTGRES_USER", "postgres")
-          .withEnv("POSTGRES_PASSWORD", "abc123") 
-          .withEnv("POSTGRES_PORT","5432")
-          .withEnv("POSTGRES_DBNAME", "delivery")
-          .dependsOn(postgres)
+         .withEnv("POSTGRES_USER", "postgres")
+         .withEnv("POSTGRES_PASSWORD", "abc123") 
+         .withEnv("POSTGRES_PORT","5432")
+         .withEnv("POSTGRES_DBNAME", "delivery")
+           .dependsOn(postgres)
           .withNetwork(red)
           .withCopyFileToContainer(war,"/opt/payara/deployments/aplicacion.war") 
           .waitingFor(Wait.forLogMessage(".*JMXStartupService has started JMXConnector on JMXService.*",1))
@@ -91,15 +95,29 @@ public class ComercioIT {
     @Test
     public void lanzarPayaraTest() {
         System.out.println("Comercio - lanzarPayara");
+        payara.start();
+        postgres.start();
         Assertions.assertTrue(payara.isRunning());
         Assertions.assertTrue(postgres.isRunning());
-        cliente = ClientBuilder.newClient();
-        
-        
-        target = cliente.target("http://localhost:8080/aplicacion");
-        Response respuesta = target.path("/hello")
-                .request(MediaType.APPLICATION_JSON).get();
-        Assertions.assertEquals(200,respuesta.getStatus());
+        cliente = ClientBuilder.newClient();   
+        URI baseUri = URI.create(String.format("http://%s:%d/aplicacion", payara.getContainerIpAddress(),payara.getMappedPort(8080)));
+        target = cliente.target(baseUri);
+          Response respuesta = target
+            .path("/hello")
+            .request(MediaType.APPLICATION_JSON)
+            .get();
+        int estado = respuesta.getStatus();
+        System.out.println("El estado de la peticion exitosa es " + estado);
+        Assertions.assertEquals(200,estado);
+        respuesta = target
+            .path("/bye")
+            .request(MediaType.APPLICATION_JSON)
+            .get();
+        estado = respuesta.getStatus();
+         System.out.println("El estado de la peticion fallida es " + estado);
+        Assertions.assertEquals(404,estado);
+        payara.stop();
+        postgres.stop();
        // agregue su logica de arrancar los contenedores que usara. Note que las propiedades no
        // estan agregadas a la clase, debera crearlas.
     }
