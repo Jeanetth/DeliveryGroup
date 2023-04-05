@@ -108,7 +108,7 @@ public class ComercioIT {
             .get();
         int estado = respuesta.getStatus();
         System.out.println("El estado de la peticion exitosa es " + estado);
-        Assertions.assertEquals(404,estado);
+        Assertions.assertEquals(200,estado);
         respuesta = target
             .path("/bye")
             .request(MediaType.APPLICATION_JSON)
