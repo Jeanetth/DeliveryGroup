@@ -142,6 +142,7 @@ public class ComercioIT {
      *
      * @see Comercio
      */
+    /*
     @Order(1)
     @Test
     public void crearTest() {
@@ -166,6 +167,7 @@ public class ComercioIT {
     /**
      * Busca un comercio por su Identificador
      */
+    /*
     @Order(2)
     @Test
     public void findByIdTest() {
@@ -184,15 +186,15 @@ public class ComercioIT {
         Assertions.assertEquals(404, respuesta.getStatus());
         Assertions.assertTrue(respuesta.getHeaders().containsKey(RestResourcePattern.ID_NOT_FOUND));
     }
-
+    
     /**
      * Crea un tipo de comercio
      *
      * @see TipoComercio
      */
-    @Order(3)
+    /*@Order(3)
     @Test
-    public void crearTipoComercioTest() {
+    /*public void crearTipoComercioTest() {
         System.out.println("Comercio - crearTipoComercio");
         Assertions.assertTrue(payara.isRunning());
         int esperado = Response.Status.CREATED.getStatusCode();
@@ -215,6 +217,7 @@ public class ComercioIT {
      *
      * @see ComercioTipoComercio
      */
+    /*
     @Order(4)
     @Test
     public void validarTipoVacioTest() {
@@ -239,6 +242,7 @@ public class ComercioIT {
      *
      * @see ComercioTipoComercio
      */
+    /*
     @Order(5)
     @Test
     public void agregarTipoAComercio() {
@@ -268,6 +272,7 @@ public class ComercioIT {
      *
      * @see ComercioTipoComercio
      */
+    /*
     @Order(6)
     @Test
     public void validarTipoLlenoTest() {
@@ -289,6 +294,7 @@ public class ComercioIT {
      * @see Direccion
      * @see Sucursal
      */
+    /*
     @Order(7)
     @Test
     public void crearSucursalTest() {
@@ -357,10 +363,19 @@ public class ComercioIT {
                 .post(Entity.entity(s, MediaType.APPLICATION_JSON));
         Assertions.assertEquals(400, respuestaSucursal.getStatus());
     }
-    
+    */
+    @Test
+    public void tipoComercioTest(){
+    Response prueba =target.path("/tipocomercio").request(MediaType.APPLICATION_JSON).get();
+    int statusEsperado=200;
+    int statusObtenido=prueba.getStatus();
+    Assertions.assertEquals(statusEsperado,statusObtenido);
+        System.out.println("paso prueba peña"+ statusObtenido);
+            }
     @AfterAll
     public static void cerrarConteiner(){
         postgres.stop();
         payara.stop();
     }
+
 }

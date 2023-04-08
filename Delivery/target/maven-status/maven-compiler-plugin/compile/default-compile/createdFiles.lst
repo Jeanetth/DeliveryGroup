@@ -1,4 +1,5 @@
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Orden.class
+tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\control\AbstractDataAccess.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\TipoProducto.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Entrega.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\OrdenDetalle.class
@@ -6,6 +7,7 @@ tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\resources\RestResource.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\boundary\Constantes.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\ProductoComercioPK.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Cliente.class
+tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\control\TipoComercioBean.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\ComercioTipoComercioPK.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Sucursal.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\TipoProductoTipoComercio.class
@@ -20,9 +22,9 @@ tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\OrdenEstado.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Territorio.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Pago.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\TipoComercio.class
-tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\AbstractDataAccess.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Vehiculo.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\EntregaHistorial.class
+tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\resources\TipoComercioResource.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Repartidor.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\TipoProductoTipoComercioPK.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Producto.class

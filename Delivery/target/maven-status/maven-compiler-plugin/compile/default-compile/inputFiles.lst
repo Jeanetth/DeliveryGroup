@@ -4,6 +4,7 @@ C:\Users\Mariana\OneDrive\Escritorio\Proyecto\DeliveryGroup\Delivery\src\main\ja
 C:\Users\Mariana\OneDrive\Escritorio\Proyecto\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\resources\HelloRecord.java
 C:\Users\Mariana\OneDrive\Escritorio\Proyecto\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\EntregaHistorial.java
 C:\Users\Mariana\OneDrive\Escritorio\Proyecto\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Pago.java
+C:\Users\Mariana\OneDrive\Escritorio\Proyecto\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\control\TipoComercioBean.java
 C:\Users\Mariana\OneDrive\Escritorio\Proyecto\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\control\AbstractDataAccess.java
 C:\Users\Mariana\OneDrive\Escritorio\Proyecto\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Cliente.java
 C:\Users\Mariana\OneDrive\Escritorio\Proyecto\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\ProductoTipoProductoPK.java
@@ -21,6 +22,7 @@ C:\Users\Mariana\OneDrive\Escritorio\Proyecto\DeliveryGroup\Delivery\src\main\ja
 C:\Users\Mariana\OneDrive\Escritorio\Proyecto\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\ProductoComercio.java
 C:\Users\Mariana\OneDrive\Escritorio\Proyecto\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Entrega.java
 C:\Users\Mariana\OneDrive\Escritorio\Proyecto\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Sucursal.java
+C:\Users\Mariana\OneDrive\Escritorio\Proyecto\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\resources\TipoComercioResource.java
 C:\Users\Mariana\OneDrive\Escritorio\Proyecto\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\ComercioTipoComercioPK.java
 C:\Users\Mariana\OneDrive\Escritorio\Proyecto\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\ProductoTipoProducto.java
 C:\Users\Mariana\OneDrive\Escritorio\Proyecto\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Vehiculo.java
