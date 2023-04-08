@@ -26,6 +26,7 @@ import static org.eclipse.persistence.config.PersistenceUnitProperties.JDBC_PASS
 import static org.eclipse.persistence.config.PersistenceUnitProperties.JDBC_URL;
 import static org.eclipse.persistence.config.PersistenceUnitProperties.JDBC_USER;
 import org.eclipse.persistence.internal.sessions.cdi.InjectionManager;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
@@ -41,6 +42,7 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.lifecycle.Startables;
 import org.testcontainers.utility.MountableFile;
+import static tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.Constantes.*;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Comercio;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.ComercioTipoComercio;
@@ -63,39 +65,37 @@ import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.TipoComercio;
 public class ComercioIT {
 
     static String endpoint;
-
     static Client cliente;
     static WebTarget target;
     static Long idComercioCreado;
     static Integer idTipoCreado;
 
 
-    Network red = Network.newNetwork();
-
-    MountableFile war = MountableFile.forHostPath(Paths.get("target/Delivery-1.0.0-SNAPSHOT.war").toAbsolutePath(), 0777);
-
-    @Container
-    PostgreSQLContainer postgres = new PostgreSQLContainer<>("postgres:13-alpine")
-            .withDatabaseName("delivery")
-            .withPassword("abc123")
-            .withUsername("postgres")
-            .withInitScript("iniciarDelivery.sql")
-            .withNetwork(red)
-            .withNetworkAliases("db")
-            .withExposedPorts(5432);
-
+    static Network red = Network.newNetwork();
+    static MountableFile war = MountableFile.forHostPath(Paths.get(PATH_WAR).toAbsolutePath(), 0777);
 
     @Container
-    GenericContainer payara = new GenericContainer("payara/server-full:6.2023.3-jdk17")
-         .withEnv("POSTGRES_USER", "postgres")
-         .withEnv("POSTGRES_PASSWORD", "abc123") 
-         .withEnv("POSTGRES_PORT","5432")
-         .withEnv("POSTGRES_DBNAME", "delivery")
-           .dependsOn(postgres)
-          .withNetwork(red)
-          .withCopyFileToContainer(war,"/opt/payara/deployments/aplicacion.war") 
-          .waitingFor(Wait.forLogMessage(".*JMXStartupService has started JMXConnector on JMXService.*",1))
-          .withExposedPorts(8080);
+    static PostgreSQLContainer postgres = new PostgreSQLContainer<>(IMAGE_POSTGRES)
+                                        .withDatabaseName(DB_NAME)
+                                        .withPassword(DB_PASSWORD)
+                                        .withUsername(DB_USER)
+                                        .withInitScript(SCRIT_INIT_DB)
+                                        .withNetwork(red)
+                                        .withNetworkAliases("db")
+                                        .withExposedPorts(5432);
+
+
+    @Container
+    static GenericContainer payara = new GenericContainer(IMAGE_PAYARA)
+                                        .withEnv("POSTGRES_USER", DB_USER)
+                                        .withEnv("POSTGRES_PASSWORD",DB_PASSWORD) 
+                                        .withEnv("POSTGRES_PORT","5432")
+                                        .withEnv("POSTGRES_DBNAME", DB_NAME)
+                                        .dependsOn(postgres)
+                                        .withNetwork(red)
+                                        .withCopyFileToContainer(war,PATH_TO_PAYARA_SERVER_WAR) 
+                                        .waitingFor(Wait.forLogMessage(PAYARA_SERVER_FULL_LOG,1))
+                                        .withExposedPorts(8080);
 
     
     /**
@@ -103,49 +103,50 @@ public class ComercioIT {
      */
    // 
  
-    @Test
-    public void lanzarPayaraTest() {
+    @BeforeAll
+    public static void lanzarPayaraTest() {
+        /*agregue su logica de arrancar los contenedores que usara. Note que las propiedades no
+        estan agregadas a la clase, debera crearlas.*/
         System.out.println("Comercio - lanzarPayara");
         payara.start();
         postgres.start();
         Assertions.assertTrue(payara.isRunning());
         Assertions.assertTrue(postgres.isRunning());
         cliente = ClientBuilder.newClient();   
-        URI baseUri = URI.create(String.format("http://%s:%d/aplicacion", payara.getContainerIpAddress(),payara.getMappedPort(8080)));
+        URI baseUri = URI.create(String.format("http://%s:%d/aplicacion", payara.getContainerIpAddress(),
+                    payara.getMappedPort(8080)));
         target = cliente.target(baseUri);
-          Response respuesta = target
-            .path("/hello")
-            .request(MediaType.APPLICATION_JSON)
-            .get();
+        Response respuesta = target
+                             .path("/hello")
+                             .request(MediaType.APPLICATION_JSON)
+                             .get();
         int estado = respuesta.getStatus();
         System.out.println("El estado de la peticion exitosa es " + estado);
         Assertions.assertEquals(200,estado);
         respuesta = target
-            .path("/bye")
-            .request(MediaType.APPLICATION_JSON)
-            .get();
+                    .path("/bye")
+                    .request(MediaType.APPLICATION_JSON)
+                    .get();
         estado = respuesta.getStatus();
-         System.out.println("El estado de la peticion fallida es " + estado);
+        System.out.println("El estado de la peticion fallida es " + estado);
         Assertions.assertEquals(404,estado);
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("deliveryPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(NOMBRE_PU);
         EntityManager em = emf.createEntityManager();
         Assertions.assertNotNull(em);
-        payara.stop();
-        postgres.stop();
-       // agregue su logica de arrancar los contenedores que usara. Note que las propiedades no
-       // estan agregadas a la clase, debera crearlas.
+        em.close();
+       
     }
 
     /**
      * Realiza la prueba de creacion de Comercio
      *
      * @see Comercio
-     *
+     */
     @Order(1)
     @Test
     public void crearTest() {
         System.out.println("Comercio - crear");
-      //  Assertions.assertTrue(payara.isRunning());
+        Assertions.assertTrue(payara.isRunning());
         int esperado = Response.Status.CREATED.getStatusCode();
         Comercio creado = new Comercio();
         creado.setActivo(Boolean.TRUE);
@@ -164,12 +165,12 @@ public class ComercioIT {
 
     /**
      * Busca un comercio por su Identificador
-     *
+     */
     @Order(2)
     @Test
     public void findByIdTest() {
         System.out.println("Comercio - findById");
-       // Assertions.assertTrue(payara.isRunning());
+        Assertions.assertTrue(payara.isRunning());
         Assertions.assertNotNull(idComercioCreado);
         int esperado = 200;
         Response respuesta = target.path("/comercio/{id}").resolveTemplate("id", idComercioCreado)
@@ -188,12 +189,12 @@ public class ComercioIT {
      * Crea un tipo de comercio
      *
      * @see TipoComercio
-     *
+     */
     @Order(3)
     @Test
     public void crearTipoComercioTest() {
         System.out.println("Comercio - crearTipoComercio");
-        //Assertions.assertTrue(payara.isRunning());
+        Assertions.assertTrue(payara.isRunning());
         int esperado = Response.Status.CREATED.getStatusCode();
         TipoComercio creado = new TipoComercio();
         creado.setActivo(Boolean.TRUE);
@@ -213,12 +214,12 @@ public class ComercioIT {
      * Valida que un comercio creado previamente no posea un Tipo asociado
      *
      * @see ComercioTipoComercio
-     *
+     */
     @Order(4)
     @Test
     public void validarTipoVacioTest() {
         System.out.println("Comercio - validarTipoVacio");
-       // Assertions.assertTrue(payara.isRunning());
+        Assertions.assertTrue(payara.isRunning());
         int esperado = 200;
         Response respuesta = target.path("/comercio/{id}/tipocomercio").resolveTemplate("id", idComercioCreado)
                 .request(MediaType.APPLICATION_JSON).get();
@@ -237,12 +238,12 @@ public class ComercioIT {
      * previamente
      *
      * @see ComercioTipoComercio
-     *
+     */
     @Order(5)
     @Test
     public void agregarTipoAComercio() {
         System.out.println("Comercio - agregarTipoAComercio");
-        //Assertions.assertTrue(payara.isRunning());
+        Assertions.assertTrue(payara.isRunning());
         int esperado = Response.Status.CREATED.getStatusCode();
         Response respuesta = target.path("comercio/{idComercio}/tipocomercio/{idTipoComercio}")
                 .resolveTemplate("idComercio", idComercioCreado)
@@ -266,12 +267,12 @@ public class ComercioIT {
      * Valida que un Comercio posea tipos asociados
      *
      * @see ComercioTipoComercio
-     *
+     */
     @Order(6)
     @Test
     public void validarTipoLlenoTest() {
         System.out.println("Comercio - validarTipoLleno");
-     //   Assertions.assertTrue(payara.isRunning());
+        Assertions.assertTrue(payara.isRunning());
         int esperado = 200;
         Response respuesta = target.path("/comercio/{id}/tipocomercio").resolveTemplate("id", idComercioCreado)
                 .request(MediaType.APPLICATION_JSON).get();
@@ -287,12 +288,12 @@ public class ComercioIT {
      * @see Territorio
      * @see Direccion
      * @see Sucursal
-     *
+     */
     @Order(7)
     @Test
     public void crearSucursalTest() {
         System.out.println("Comercio - crearSucursal");
-       // Assertions.assertTrue(payara.isRunning());
+        Assertions.assertTrue(payara.isRunning());
         int esperado = 200;
         //crear territorios
         Territorio sv = new Territorio();
@@ -356,5 +357,10 @@ public class ComercioIT {
                 .post(Entity.entity(s, MediaType.APPLICATION_JSON));
         Assertions.assertEquals(400, respuestaSucursal.getStatus());
     }
-*/
+    
+    @AfterAll
+    public static void cerrarConteiner(){
+        postgres.stop();
+        payara.stop();
+    }
 }
