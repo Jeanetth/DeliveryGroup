@@ -17,13 +17,17 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Mariana
+ * @author moimo98
  */
 @Entity
 @Table(name = "comercio")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Comercio.findAll", query = "SELECT c FROM Comercio c"),
     @NamedQuery(name = "Comercio.findByIdComercio", query = "SELECT c FROM Comercio c WHERE c.idComercio = :idComercio"),
@@ -38,10 +42,12 @@ public class Comercio implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_comercio")
     private Long idComercio;
+    @Size(max = 255)
     @Column(name = "nombre")
     private String nombre;
     @Column(name = "activo")
     private Boolean activo;
+    @Size(max = 2147483647)
     @Column(name = "descripcion")
     private String descripcion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "comercio")
@@ -90,6 +96,7 @@ public class Comercio implements Serializable {
         this.descripcion = descripcion;
     }
 
+    @XmlTransient
     public Collection<ComercioTipoComercio> getComercioTipoComercioCollection() {
         return comercioTipoComercioCollection;
     }
@@ -98,6 +105,7 @@ public class Comercio implements Serializable {
         this.comercioTipoComercioCollection = comercioTipoComercioCollection;
     }
 
+    @XmlTransient
     public Collection<ProductoComercio> getProductoComercioCollection() {
         return productoComercioCollection;
     }
@@ -106,6 +114,7 @@ public class Comercio implements Serializable {
         this.productoComercioCollection = productoComercioCollection;
     }
 
+    @XmlTransient
     public Collection<Sucursal> getSucursalCollection() {
         return sucursalCollection;
     }
@@ -136,7 +145,7 @@ public class Comercio implements Serializable {
 
     @Override
     public String toString() {
-        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Comercio[ idComercio=" + idComercio + " ]";
+        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.entity.Comercio[ idComercio=" + idComercio + " ]";
     }
     
 }

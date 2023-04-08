@@ -20,13 +20,16 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Mariana
+ * @author moimo98
  */
 @Entity
 @Table(name = "entrega_historial")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "EntregaHistorial.findAll", query = "SELECT e FROM EntregaHistorial e"),
     @NamedQuery(name = "EntregaHistorial.findByIdEntregaHistorial", query = "SELECT e FROM EntregaHistorial e WHERE e.idEntregaHistorial = :idEntregaHistorial"),
@@ -43,6 +46,7 @@ public class EntregaHistorial implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_entrega_historial")
     private Long idEntregaHistorial;
+    @Size(max = 10)
     @Column(name = "estado_entrega")
     private String estadoEntrega;
     @Column(name = "fecha_alcanzado")
@@ -53,6 +57,7 @@ public class EntregaHistorial implements Serializable {
     private BigDecimal longitud;
     @Column(name = "latitud")
     private BigDecimal latitud;
+    @Size(max = 2147483647)
     @Column(name = "observaciones")
     private String observaciones;
     @JoinColumn(name = "id_entrega", referencedColumnName = "id_entrega")
@@ -144,7 +149,7 @@ public class EntregaHistorial implements Serializable {
 
     @Override
     public String toString() {
-        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.EntregaHistorial[ idEntregaHistorial=" + idEntregaHistorial + " ]";
+        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.entity.EntregaHistorial[ idEntregaHistorial=" + idEntregaHistorial + " ]";
     }
     
 }

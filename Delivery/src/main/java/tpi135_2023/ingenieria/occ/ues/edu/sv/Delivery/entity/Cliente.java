@@ -20,13 +20,17 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Mariana
+ * @author moimo98
  */
 @Entity
 @Table(name = "cliente")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c"),
     @NamedQuery(name = "Cliente.findByIdCliente", query = "SELECT c FROM Cliente c WHERE c.idCliente = :idCliente"),
@@ -42,8 +46,10 @@ public class Cliente implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_cliente")
     private Long idCliente;
+    @Size(max = 155)
     @Column(name = "nombres")
     private String nombres;
+    @Size(max = 155)
     @Column(name = "apellidos")
     private String apellidos;
     @Column(name = "id_direccion_actual")
@@ -101,6 +107,7 @@ public class Cliente implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
     }
 
+    @XmlTransient
     public Collection<Orden> getOrdenCollection() {
         return ordenCollection;
     }
@@ -131,7 +138,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Cliente[ idCliente=" + idCliente + " ]";
+        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.entity.Cliente[ idCliente=" + idCliente + " ]";
     }
     
 }

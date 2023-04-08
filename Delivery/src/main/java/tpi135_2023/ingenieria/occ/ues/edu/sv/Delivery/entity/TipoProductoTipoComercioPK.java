@@ -8,18 +8,21 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author Mariana
+ * @author moimo98
  */
 @Embeddable
 public class TipoProductoTipoComercioPK implements Serializable {
 
     @Basic(optional = false)
+    @NotNull
     @Column(name = "id_tipo_producto")
     private int idTipoProducto;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "id_tipo_comercio")
     private int idTipoComercio;
 
@@ -73,7 +76,7 @@ public class TipoProductoTipoComercioPK implements Serializable {
 
     @Override
     public String toString() {
-        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.TipoProductoTipoComercioPK[ idTipoProducto=" + idTipoProducto + ", idTipoComercio=" + idTipoComercio + " ]";
+        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.entity.TipoProductoTipoComercioPK[ idTipoProducto=" + idTipoProducto + ", idTipoComercio=" + idTipoComercio + " ]";
     }
     
 }

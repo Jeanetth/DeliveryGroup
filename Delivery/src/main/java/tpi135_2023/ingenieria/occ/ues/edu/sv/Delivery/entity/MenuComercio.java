@@ -21,13 +21,17 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Mariana
+ * @author moimo98
  */
 @Entity
 @Table(name = "menu_comercio")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "MenuComercio.findAll", query = "SELECT m FROM MenuComercio m"),
     @NamedQuery(name = "MenuComercio.findByIdMenu", query = "SELECT m FROM MenuComercio m WHERE m.idMenu = :idMenu"),
@@ -42,8 +46,10 @@ public class MenuComercio implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_menu")
     private Long idMenu;
+    @Size(max = 255)
     @Column(name = "nombre")
     private String nombre;
+    @Size(max = 2147483647)
     @Column(name = "descripcion")
     private String descripcion;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -96,6 +102,7 @@ public class MenuComercio implements Serializable {
         this.precioBase = precioBase;
     }
 
+    @XmlTransient
     public Collection<OrdenDetalle> getOrdenDetalleCollection() {
         return ordenDetalleCollection;
     }
@@ -134,7 +141,7 @@ public class MenuComercio implements Serializable {
 
     @Override
     public String toString() {
-        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.MenuComercio[ idMenu=" + idMenu + " ]";
+        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.entity.MenuComercio[ idMenu=" + idMenu + " ]";
     }
     
 }

@@ -16,13 +16,17 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Mariana
+ * @author moimo98
  */
 @Entity
 @Table(name = "vehiculo")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Vehiculo.findAll", query = "SELECT v FROM Vehiculo v"),
     @NamedQuery(name = "Vehiculo.findByIdVehiculo", query = "SELECT v FROM Vehiculo v WHERE v.idVehiculo = :idVehiculo"),
@@ -39,14 +43,18 @@ public class Vehiculo implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_vehiculo")
     private Long idVehiculo;
+    @Size(max = 10)
     @Column(name = "tipo_vehiculo")
     private String tipoVehiculo;
+    @Size(max = 2147483647)
     @Column(name = "placa")
     private String placa;
+    @Size(max = 255)
     @Column(name = "propietario")
     private String propietario;
     @Column(name = "activo")
     private Boolean activo;
+    @Size(max = 2147483647)
     @Column(name = "comentarios")
     private String comentarios;
     @OneToMany(mappedBy = "idVehiculo")
@@ -107,6 +115,7 @@ public class Vehiculo implements Serializable {
         this.comentarios = comentarios;
     }
 
+    @XmlTransient
     public Collection<Entrega> getEntregaCollection() {
         return entregaCollection;
     }
@@ -137,7 +146,7 @@ public class Vehiculo implements Serializable {
 
     @Override
     public String toString() {
-        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Vehiculo[ idVehiculo=" + idVehiculo + " ]";
+        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.entity.Vehiculo[ idVehiculo=" + idVehiculo + " ]";
     }
     
 }

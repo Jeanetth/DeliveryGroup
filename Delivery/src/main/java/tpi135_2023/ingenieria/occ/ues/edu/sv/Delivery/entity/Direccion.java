@@ -17,13 +17,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Mariana
+ * @author moimo98
  */
 @Entity
 @Table(name = "direccion")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Direccion.findAll", query = "SELECT d FROM Direccion d"),
     @NamedQuery(name = "Direccion.findByIdDireccion", query = "SELECT d FROM Direccion d WHERE d.idDireccion = :idDireccion"),
@@ -39,8 +42,10 @@ public class Direccion implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_direccion")
     private Long idDireccion;
+    @Size(max = 2147483647)
     @Column(name = "direccion")
     private String direccion;
+    @Size(max = 2147483647)
     @Column(name = "referencias")
     private String referencias;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -129,7 +134,7 @@ public class Direccion implements Serializable {
 
     @Override
     public String toString() {
-        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Direccion[ idDireccion=" + idDireccion + " ]";
+        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.entity.Direccion[ idDireccion=" + idDireccion + " ]";
     }
     
 }

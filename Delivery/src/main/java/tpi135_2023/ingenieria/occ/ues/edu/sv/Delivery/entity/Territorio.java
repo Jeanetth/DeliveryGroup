@@ -18,13 +18,17 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Mariana
+ * @author moimo98
  */
 @Entity
 @Table(name = "territorio")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Territorio.findAll", query = "SELECT t FROM Territorio t"),
     @NamedQuery(name = "Territorio.findByIdTerritorio", query = "SELECT t FROM Territorio t WHERE t.idTerritorio = :idTerritorio"),
@@ -39,8 +43,10 @@ public class Territorio implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_territorio")
     private Integer idTerritorio;
+    @Size(max = 255)
     @Column(name = "nombre")
     private String nombre;
+    @Size(max = 155)
     @Column(name = "texto_visible")
     private String textoVisible;
     @Column(name = "hijos_obligatorios")
@@ -92,6 +98,7 @@ public class Territorio implements Serializable {
         this.hijosObligatorios = hijosObligatorios;
     }
 
+    @XmlTransient
     public Collection<Direccion> getDireccionCollection() {
         return direccionCollection;
     }
@@ -100,6 +107,7 @@ public class Territorio implements Serializable {
         this.direccionCollection = direccionCollection;
     }
 
+    @XmlTransient
     public Collection<Territorio> getTerritorioCollection() {
         return territorioCollection;
     }
@@ -138,7 +146,7 @@ public class Territorio implements Serializable {
 
     @Override
     public String toString() {
-        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Territorio[ idTerritorio=" + idTerritorio + " ]";
+        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.entity.Territorio[ idTerritorio=" + idTerritorio + " ]";
     }
     
 }

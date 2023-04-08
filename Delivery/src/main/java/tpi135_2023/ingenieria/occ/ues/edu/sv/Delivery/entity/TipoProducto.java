@@ -19,13 +19,17 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Mariana
+ * @author moimo98
  */
 @Entity
 @Table(name = "tipo_producto")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TipoProducto.findAll", query = "SELECT t FROM TipoProducto t"),
     @NamedQuery(name = "TipoProducto.findByIdTipoProducto", query = "SELECT t FROM TipoProducto t WHERE t.idTipoProducto = :idTipoProducto"),
@@ -40,10 +44,12 @@ public class TipoProducto implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_tipo_producto")
     private Integer idTipoProducto;
+    @Size(max = 155)
     @Column(name = "nombre")
     private String nombre;
     @Column(name = "activo")
     private Boolean activo;
+    @Size(max = 2147483647)
     @Column(name = "comentarios")
     private String comentarios;
     @OneToMany(mappedBy = "idTipoProductoPadre")
@@ -95,6 +101,7 @@ public class TipoProducto implements Serializable {
         this.comentarios = comentarios;
     }
 
+    @XmlTransient
     public Collection<TipoProducto> getTipoProductoCollection() {
         return tipoProductoCollection;
     }
@@ -111,6 +118,7 @@ public class TipoProducto implements Serializable {
         this.idTipoProductoPadre = idTipoProductoPadre;
     }
 
+    @XmlTransient
     public Collection<TipoProductoTipoComercio> getTipoProductoTipoComercioCollection() {
         return tipoProductoTipoComercioCollection;
     }
@@ -119,6 +127,7 @@ public class TipoProducto implements Serializable {
         this.tipoProductoTipoComercioCollection = tipoProductoTipoComercioCollection;
     }
 
+    @XmlTransient
     public Collection<ProductoTipoProducto> getProductoTipoProductoCollection() {
         return productoTipoProductoCollection;
     }
@@ -149,7 +158,7 @@ public class TipoProducto implements Serializable {
 
     @Override
     public String toString() {
-        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.TipoProducto[ idTipoProducto=" + idTipoProducto + " ]";
+        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.entity.TipoProducto[ idTipoProducto=" + idTipoProducto + " ]";
     }
     
 }

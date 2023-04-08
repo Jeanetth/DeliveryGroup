@@ -19,13 +19,16 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Mariana
+ * @author moimo98
  */
 @Entity
 @Table(name = "orden_estado")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "OrdenEstado.findAll", query = "SELECT o FROM OrdenEstado o"),
     @NamedQuery(name = "OrdenEstado.findByIdOrdenEstado", query = "SELECT o FROM OrdenEstado o WHERE o.idOrdenEstado = :idOrdenEstado"),
@@ -40,11 +43,13 @@ public class OrdenEstado implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_orden_estado")
     private Long idOrdenEstado;
+    @Size(max = 10)
     @Column(name = "estado")
     private String estado;
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCreacion;
+    @Size(max = 2147483647)
     @Column(name = "comentarios")
     private String comentarios;
     @JoinColumn(name = "id_orden", referencedColumnName = "id_orden")
@@ -120,7 +125,7 @@ public class OrdenEstado implements Serializable {
 
     @Override
     public String toString() {
-        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.OrdenEstado[ idOrdenEstado=" + idOrdenEstado + " ]";
+        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.entity.OrdenEstado[ idOrdenEstado=" + idOrdenEstado + " ]";
     }
     
 }

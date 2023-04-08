@@ -18,13 +18,16 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Mariana
+ * @author moimo98
  */
 @Entity
 @Table(name = "producto_comercio")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "ProductoComercio.findAll", query = "SELECT p FROM ProductoComercio p"),
     @NamedQuery(name = "ProductoComercio.findByIdProducto", query = "SELECT p FROM ProductoComercio p WHERE p.productoComercioPK.idProducto = :idProducto"),
@@ -101,6 +104,7 @@ public class ProductoComercio implements Serializable {
         this.producto = producto;
     }
 
+    @XmlTransient
     public Collection<MenuComercio> getMenuComercioCollection() {
         return menuComercioCollection;
     }
@@ -131,7 +135,7 @@ public class ProductoComercio implements Serializable {
 
     @Override
     public String toString() {
-        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.ProductoComercio[ productoComercioPK=" + productoComercioPK + " ]";
+        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.entity.ProductoComercio[ productoComercioPK=" + productoComercioPK + " ]";
     }
     
 }

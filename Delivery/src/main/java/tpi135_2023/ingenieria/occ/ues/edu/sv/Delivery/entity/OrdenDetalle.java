@@ -14,13 +14,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Mariana
+ * @author moimo98
  */
 @Entity
 @Table(name = "orden_detalle")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "OrdenDetalle.findAll", query = "SELECT o FROM OrdenDetalle o"),
     @NamedQuery(name = "OrdenDetalle.findByIdOrden", query = "SELECT o FROM OrdenDetalle o WHERE o.ordenDetallePK.idOrden = :idOrden"),
@@ -38,6 +41,7 @@ public class OrdenDetalle implements Serializable {
     private BigDecimal cantidad;
     @Column(name = "precio")
     private BigDecimal precio;
+    @Size(max = 2147483647)
     @Column(name = "observaciones")
     private String observaciones;
     @JoinColumn(name = "id_menu", referencedColumnName = "id_menu", insertable = false, updatable = false)
@@ -128,7 +132,7 @@ public class OrdenDetalle implements Serializable {
 
     @Override
     public String toString() {
-        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.OrdenDetalle[ ordenDetallePK=" + ordenDetallePK + " ]";
+        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.entity.OrdenDetalle[ ordenDetallePK=" + ordenDetallePK + " ]";
     }
     
 }

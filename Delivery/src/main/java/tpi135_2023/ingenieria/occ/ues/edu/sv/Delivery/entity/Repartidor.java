@@ -19,13 +19,17 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Mariana
+ * @author moimo98
  */
 @Entity
 @Table(name = "repartidor")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Repartidor.findAll", query = "SELECT r FROM Repartidor r"),
     @NamedQuery(name = "Repartidor.findByIdRepartidor", query = "SELECT r FROM Repartidor r WHERE r.idRepartidor = :idRepartidor"),
@@ -43,10 +47,13 @@ public class Repartidor implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_repartidor")
     private Long idRepartidor;
+    @Size(max = 255)
     @Column(name = "nombres")
     private String nombres;
+    @Size(max = 255)
     @Column(name = "apellidos")
     private String apellidos;
+    @Size(max = 10)
     @Column(name = "tipo_licencia")
     private String tipoLicencia;
     @Column(name = "fecha_nacimiento")
@@ -54,6 +61,7 @@ public class Repartidor implements Serializable {
     private Date fechaNacimiento;
     @Column(name = "activo")
     private Boolean activo;
+    @Size(max = 2147483647)
     @Column(name = "observaciones")
     private String observaciones;
     @OneToMany(mappedBy = "idRepartidor")
@@ -122,6 +130,7 @@ public class Repartidor implements Serializable {
         this.observaciones = observaciones;
     }
 
+    @XmlTransient
     public Collection<Entrega> getEntregaCollection() {
         return entregaCollection;
     }
@@ -152,7 +161,7 @@ public class Repartidor implements Serializable {
 
     @Override
     public String toString() {
-        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Repartidor[ idRepartidor=" + idRepartidor + " ]";
+        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.entity.Repartidor[ idRepartidor=" + idRepartidor + " ]";
     }
     
 }

@@ -19,13 +19,17 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Mariana
+ * @author moimo98
  */
 @Entity
 @Table(name = "tipo_comercio")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TipoComercio.findAll", query = "SELECT t FROM TipoComercio t"),
     @NamedQuery(name = "TipoComercio.findByIdTipoComercio", query = "SELECT t FROM TipoComercio t WHERE t.idTipoComercio = :idTipoComercio"),
@@ -40,10 +44,12 @@ public class TipoComercio implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_tipo_comercio")
     private Integer idTipoComercio;
+    @Size(max = 155)
     @Column(name = "nombre")
     private String nombre;
     @Column(name = "activo")
     private Boolean activo;
+    @Size(max = 2147483647)
     @Column(name = "comentarios")
     private String comentarios;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoComercio")
@@ -95,6 +101,7 @@ public class TipoComercio implements Serializable {
         this.comentarios = comentarios;
     }
 
+    @XmlTransient
     public Collection<ComercioTipoComercio> getComercioTipoComercioCollection() {
         return comercioTipoComercioCollection;
     }
@@ -103,6 +110,7 @@ public class TipoComercio implements Serializable {
         this.comercioTipoComercioCollection = comercioTipoComercioCollection;
     }
 
+    @XmlTransient
     public Collection<TipoComercio> getTipoComercioCollection() {
         return tipoComercioCollection;
     }
@@ -119,6 +127,7 @@ public class TipoComercio implements Serializable {
         this.idTipoComercioPadre = idTipoComercioPadre;
     }
 
+    @XmlTransient
     public Collection<TipoProductoTipoComercio> getTipoProductoTipoComercioCollection() {
         return tipoProductoTipoComercioCollection;
     }
@@ -149,7 +158,7 @@ public class TipoComercio implements Serializable {
 
     @Override
     public String toString() {
-        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.TipoComercio[ idTipoComercio=" + idTipoComercio + " ]";
+        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.entity.TipoComercio[ idTipoComercio=" + idTipoComercio + " ]";
     }
     
 }

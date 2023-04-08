@@ -16,13 +16,15 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Mariana
+ * @author moimo98
  */
 @Entity
 @Table(name = "comercio_tipo_comercio")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "ComercioTipoComercio.findAll", query = "SELECT c FROM ComercioTipoComercio c"),
     @NamedQuery(name = "ComercioTipoComercio.findByIdComercio", query = "SELECT c FROM ComercioTipoComercio c WHERE c.comercioTipoComercioPK.idComercio = :idComercio"),
@@ -119,7 +121,7 @@ public class ComercioTipoComercio implements Serializable {
 
     @Override
     public String toString() {
-        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.ComercioTipoComercio[ comercioTipoComercioPK=" + comercioTipoComercioPK + " ]";
+        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.entity.ComercioTipoComercio[ comercioTipoComercioPK=" + comercioTipoComercioPK + " ]";
     }
     
 }

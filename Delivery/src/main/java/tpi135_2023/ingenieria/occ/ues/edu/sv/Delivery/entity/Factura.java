@@ -19,13 +19,18 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Mariana
+ * @author moimo98
  */
 @Entity
 @Table(name = "factura")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Factura.findAll", query = "SELECT f FROM Factura f"),
     @NamedQuery(name = "Factura.findByNumeroFactura", query = "SELECT f FROM Factura f WHERE f.numeroFactura = :numeroFactura"),
@@ -37,6 +42,8 @@ public class Factura implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 2147483647)
     @Column(name = "numero_factura")
     private String numeroFactura;
     @Column(name = "fecha_emision")
@@ -44,6 +51,7 @@ public class Factura implements Serializable {
     private Date fechaEmision;
     @Column(name = "anulada")
     private Boolean anulada;
+    @Size(max = 2147483647)
     @Column(name = "observaciones")
     private String observaciones;
     @OneToMany(mappedBy = "numeroFactura")
@@ -91,6 +99,7 @@ public class Factura implements Serializable {
         this.observaciones = observaciones;
     }
 
+    @XmlTransient
     public Collection<Pago> getPagoCollection() {
         return pagoCollection;
     }
@@ -129,7 +138,7 @@ public class Factura implements Serializable {
 
     @Override
     public String toString() {
-        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Factura[ numeroFactura=" + numeroFactura + " ]";
+        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.entity.Factura[ numeroFactura=" + numeroFactura + " ]";
     }
     
 }

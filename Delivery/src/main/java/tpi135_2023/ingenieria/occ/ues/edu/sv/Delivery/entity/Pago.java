@@ -17,13 +17,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Mariana
+ * @author moimo98
  */
 @Entity
 @Table(name = "pago")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Pago.findAll", query = "SELECT p FROM Pago p"),
     @NamedQuery(name = "Pago.findByIdPago", query = "SELECT p FROM Pago p WHERE p.idPago = :idPago"),
@@ -39,13 +42,16 @@ public class Pago implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_pago")
     private Long idPago;
+    @Size(max = 10)
     @Column(name = "tipo_pago")
     private String tipoPago;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "monto")
     private BigDecimal monto;
+    @Size(max = 2147483647)
     @Column(name = "referencia")
     private String referencia;
+    @Size(max = 10)
     @Column(name = "estado")
     private String estado;
     @JoinColumn(name = "numero_factura", referencedColumnName = "numero_factura")
@@ -129,7 +135,7 @@ public class Pago implements Serializable {
 
     @Override
     public String toString() {
-        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Pago[ idPago=" + idPago + " ]";
+        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.entity.Pago[ idPago=" + idPago + " ]";
     }
     
 }

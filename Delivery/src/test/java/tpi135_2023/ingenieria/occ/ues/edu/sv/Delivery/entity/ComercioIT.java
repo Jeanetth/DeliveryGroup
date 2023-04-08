@@ -15,6 +15,16 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.net.URI;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import static org.eclipse.persistence.config.PersistenceUnitProperties.JDBC_DRIVER;
+import static org.eclipse.persistence.config.PersistenceUnitProperties.JDBC_PASSWORD;
+import static org.eclipse.persistence.config.PersistenceUnitProperties.JDBC_URL;
+import static org.eclipse.persistence.config.PersistenceUnitProperties.JDBC_USER;
 import org.eclipse.persistence.internal.sessions.cdi.InjectionManager;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -65,13 +75,14 @@ public class ComercioIT {
     MountableFile war = MountableFile.forHostPath(Paths.get("target/Delivery-1.0.0-SNAPSHOT.war").toAbsolutePath(), 0777);
 
     @Container
-    GenericContainer postgres = new PostgreSQLContainer("postgres:13-alpine")
+    PostgreSQLContainer postgres = new PostgreSQLContainer<>("postgres:13-alpine")
             .withDatabaseName("delivery")
             .withPassword("abc123")
             .withUsername("postgres")
             .withInitScript("iniciarDelivery.sql")
             .withNetwork(red)
-            .withNetworkAliases("db");
+            .withNetworkAliases("db")
+            .withExposedPorts(5432);
 
 
     @Container
@@ -91,7 +102,7 @@ public class ComercioIT {
      * Se encarga de inicializar los contenedores para realizar las pruebas
      */
    // 
-
+ 
     @Test
     public void lanzarPayaraTest() {
         System.out.println("Comercio - lanzarPayara");
@@ -116,6 +127,9 @@ public class ComercioIT {
         estado = respuesta.getStatus();
          System.out.println("El estado de la peticion fallida es " + estado);
         Assertions.assertEquals(404,estado);
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("deliveryPU");
+        EntityManager em = emf.createEntityManager();
+        Assertions.assertNotNull(em);
         payara.stop();
         postgres.stop();
        // agregue su logica de arrancar los contenedores que usara. Note que las propiedades no

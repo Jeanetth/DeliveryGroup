@@ -19,13 +19,18 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Mariana
+ * @author moimo98
  */
 @Entity
 @Table(name = "sucursal")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Sucursal.findAll", query = "SELECT s FROM Sucursal s"),
     @NamedQuery(name = "Sucursal.findByIdSucursal", query = "SELECT s FROM Sucursal s WHERE s.idSucursal = :idSucursal"),
@@ -41,8 +46,11 @@ public class Sucursal implements Serializable {
     @Column(name = "id_sucursal")
     private Integer idSucursal;
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
     @Column(name = "nombre")
     private String nombre;
+    @Size(max = 2147483647)
     @Column(name = "path_logo")
     private String pathLogo;
     @Column(name = "id_direccion")
@@ -105,6 +113,7 @@ public class Sucursal implements Serializable {
         this.idComercio = idComercio;
     }
 
+    @XmlTransient
     public Collection<Orden> getOrdenCollection() {
         return ordenCollection;
     }
@@ -135,7 +144,7 @@ public class Sucursal implements Serializable {
 
     @Override
     public String toString() {
-        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Sucursal[ idSucursal=" + idSucursal + " ]";
+        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.entity.Sucursal[ idSucursal=" + idSucursal + " ]";
     }
     
 }

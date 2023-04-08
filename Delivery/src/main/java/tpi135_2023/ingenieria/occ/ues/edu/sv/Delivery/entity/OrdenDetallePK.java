@@ -8,18 +8,21 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author Mariana
+ * @author moimo98
  */
 @Embeddable
 public class OrdenDetallePK implements Serializable {
 
     @Basic(optional = false)
+    @NotNull
     @Column(name = "id_orden")
     private long idOrden;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "id_menu")
     private long idMenu;
 
@@ -73,7 +76,7 @@ public class OrdenDetallePK implements Serializable {
 
     @Override
     public String toString() {
-        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.OrdenDetallePK[ idOrden=" + idOrden + ", idMenu=" + idMenu + " ]";
+        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.entity.OrdenDetallePK[ idOrden=" + idOrden + ", idMenu=" + idMenu + " ]";
     }
     
 }

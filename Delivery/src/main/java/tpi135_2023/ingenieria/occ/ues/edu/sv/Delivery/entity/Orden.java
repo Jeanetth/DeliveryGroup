@@ -23,13 +23,17 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Mariana
+ * @author moimo98
  */
 @Entity
 @Table(name = "orden")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Orden.findAll", query = "SELECT o FROM Orden o"),
     @NamedQuery(name = "Orden.findByIdOrden", query = "SELECT o FROM Orden o WHERE o.idOrden = :idOrden"),
@@ -47,6 +51,7 @@ public class Orden implements Serializable {
     @Column(name = "fecha_orden")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaOrden;
+    @Size(max = 2147483647)
     @Column(name = "observaciones")
     private String observaciones;
     @Column(name = "id_direccion")
@@ -105,6 +110,7 @@ public class Orden implements Serializable {
         this.idDireccion = idDireccion;
     }
 
+    @XmlTransient
     public Collection<OrdenDetalle> getOrdenDetalleCollection() {
         return ordenDetalleCollection;
     }
@@ -113,6 +119,7 @@ public class Orden implements Serializable {
         this.ordenDetalleCollection = ordenDetalleCollection;
     }
 
+    @XmlTransient
     public Collection<Factura> getFacturaCollection() {
         return facturaCollection;
     }
@@ -121,6 +128,7 @@ public class Orden implements Serializable {
         this.facturaCollection = facturaCollection;
     }
 
+    @XmlTransient
     public Collection<OrdenEstado> getOrdenEstadoCollection() {
         return ordenEstadoCollection;
     }
@@ -129,6 +137,7 @@ public class Orden implements Serializable {
         this.ordenEstadoCollection = ordenEstadoCollection;
     }
 
+    @XmlTransient
     public Collection<Entrega> getEntregaCollection() {
         return entregaCollection;
     }
@@ -175,7 +184,7 @@ public class Orden implements Serializable {
 
     @Override
     public String toString() {
-        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Orden[ idOrden=" + idOrden + " ]";
+        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.entity.Orden[ idOrden=" + idOrden + " ]";
     }
     
 }

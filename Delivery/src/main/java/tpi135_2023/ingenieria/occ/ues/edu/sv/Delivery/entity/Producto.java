@@ -17,13 +17,17 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Mariana
+ * @author moimo98
  */
 @Entity
 @Table(name = "producto")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p"),
     @NamedQuery(name = "Producto.findByIdProducto", query = "SELECT p FROM Producto p WHERE p.idProducto = :idProducto"),
@@ -38,10 +42,12 @@ public class Producto implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_producto")
     private Integer idProducto;
+    @Size(max = 255)
     @Column(name = "nombre")
     private String nombre;
     @Column(name = "activo")
     private Boolean activo;
+    @Size(max = 2147483647)
     @Column(name = "descripcion")
     private String descripcion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
@@ -88,6 +94,7 @@ public class Producto implements Serializable {
         this.descripcion = descripcion;
     }
 
+    @XmlTransient
     public Collection<ProductoComercio> getProductoComercioCollection() {
         return productoComercioCollection;
     }
@@ -96,6 +103,7 @@ public class Producto implements Serializable {
         this.productoComercioCollection = productoComercioCollection;
     }
 
+    @XmlTransient
     public Collection<ProductoTipoProducto> getProductoTipoProductoCollection() {
         return productoTipoProductoCollection;
     }
@@ -126,7 +134,7 @@ public class Producto implements Serializable {
 
     @Override
     public String toString() {
-        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Producto[ idProducto=" + idProducto + " ]";
+        return "tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.entity.Producto[ idProducto=" + idProducto + " ]";
     }
     
 }
