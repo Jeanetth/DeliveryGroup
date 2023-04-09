@@ -8,7 +8,7 @@ import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import java.io.Serializable;
-import javax.persistence.PersistenceContext;
+import jakarta.persistence.PersistenceContext;
 import static tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.Constantes.NOMBRE_PU;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Comercio;
 
