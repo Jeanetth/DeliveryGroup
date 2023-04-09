@@ -45,7 +45,7 @@
         <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-api</artifactId>
-            <version>${jakartaee}</version>
+            <version>10.0.0</version>
             <scope>provided</scope>
         </dependency>
         
@@ -61,47 +61,6 @@
             <version>7.0</version>
         </dependency>
         
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>javax.persistence</artifactId>
-            <version>2.2.1</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>org.eclipse.persistence.core</artifactId>
-            <version>2.7.9</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>org.eclipse.persistence.asm</artifactId>
-            <version>9.1.0</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>org.eclipse.persistence.antlr</artifactId>
-            <version>2.7.9</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>org.eclipse.persistence.jpa</artifactId>
-            <version>2.7.9</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>org.eclipse.persistence.jpa.jpql</artifactId>
-            <version>2.7.9</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>org.eclipse.persistence.moxy</artifactId>
-            <version>2.7.9</version>
-        </dependency>
         
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -164,8 +123,20 @@
                 <version>1.6.1</version>
                 <scope>runtime</scope>
          </dependency>
+         
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        
+      
+    <dependency>
+        <groupId>org.eclipse.persistence</groupId>
+        <artifactId>eclipselink</artifactId>
+        <version>4.0.1</version>
+    </dependency>
 
-            
     </dependencies>  
      <build>
         <plugins>
@@ -206,7 +177,7 @@
                                 <artifactItem>
                                     <groupId>jakarta.platform</groupId>
                                     <artifactId>jakarta.jakartaee-api</artifactId>
-                                    <version>${jakartaee}</version>
+                                    <version>10.0.0</version>
                                     <type>jar</type>
                                 </artifactItem>
                             </artifactItems>

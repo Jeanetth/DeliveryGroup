@@ -26,10 +26,10 @@
     <class>tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Territorio</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-        <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-        <property name="javax.persistence.jdbc.url" value="jdbc:tc:postgresql:9.6.8:///delivery"/>
-        <property name="javax.persistence.jdbc.user" value="postgres"/>
-        <property name="javax.persistence.jdbc.password" value="abc123"/>
+        <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+        <property name="jakarta.persistence.jdbc.url" value="jdbc:tc:postgresql:9.6.8:///delivery"/>
+        <property name="jakarta.persistence.jdbc.user" value="postgres"/>
+        <property name="jakarta.persistence.jdbc.password" value="abc123"/>
     </properties>
   </persistence-unit>
 </persistence>
