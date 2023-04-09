@@ -27,7 +27,7 @@
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
         <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-        <property name="jakarta.persistence.jdbc.url" value="jdbc:tc:postgresql:9.6.8:///delivery"/>
+        <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/delivery"/>
         <property name="jakarta.persistence.jdbc.user" value="postgres"/>
         <property name="jakarta.persistence.jdbc.password" value="abc123"/>
     </properties>
