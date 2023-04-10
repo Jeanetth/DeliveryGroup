@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="deliveryPU" transaction-type="JTA">
-      <jta-data-source>global</jta-data-source>
+      <jta-data-source>java:global/deliveryDS</jta-data-source>
     <class>tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Vehiculo</class>
     <class>tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.EntregaHistorial</class>
     <class>tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Repartidor</class>

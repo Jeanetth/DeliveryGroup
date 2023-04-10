@@ -15,10 +15,25 @@
 package tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery;
 
 
+import jakarta.annotation.sql.DataSourceDefinition;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
 
 @ApplicationPath("")
+@ApplicationScoped
+@DataSourceDefinition(
+        name = "java:global/deliveryDS",
+        className = "org.postgresql.ds.PGSimpleDataSource",
+        user = "postgres",        
+        password = "abc123",
+        url = "jdbc:postgresql://postgres:5432/delivery",
+        properties = {
+            "allowPublicKeyRetrieval=true",
+            "useSSL=false",
+            "requireSSL=false"
+        }
+)
 public class ApplicationConfig extends Application {
     
 }

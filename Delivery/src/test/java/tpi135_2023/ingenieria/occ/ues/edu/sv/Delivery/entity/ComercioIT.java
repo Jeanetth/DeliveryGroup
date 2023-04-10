@@ -63,8 +63,8 @@ public class ComercioIT {
     static Integer idTipoCreado;
 
 
-    static Network red = Network.newNetwork();
-    static MountableFile war = MountableFile.forHostPath(Paths.get(PATH_WAR).toAbsolutePath(), 0777);
+    static  Network red = Network.newNetwork();
+    static  MountableFile war = MountableFile.forHostPath(Paths.get(PATH_WAR).toAbsolutePath(), 0777);
 
     @Container
     static PostgreSQLContainer postgres = new PostgreSQLContainer<>(IMAGE_POSTGRES)
@@ -73,21 +73,18 @@ public class ComercioIT {
                                         .withUsername(DB_USER)
                                         .withInitScript(SCRIT_INIT_DB)
                                         .withNetwork(red)
-                                        .withNetworkAliases("db")
+                                        .withNetworkAliases("postgres")
                                         .withExposedPorts(5432);
 
 
     @Container
-    static GenericContainer payara = new GenericContainer(IMAGE_PAYARA)
-                                        .withEnv("POSTGRES_USER", DB_USER)
-                                        .withEnv("POSTGRES_PASSWORD",DB_PASSWORD) 
-                                        .withEnv("POSTGRES_PORT","5432")
-                                        .withEnv("POSTGRES_DBNAME", DB_NAME)
+    static GenericContainer payara = new GenericContainer("delivery-prueba:1")
                                         .dependsOn(postgres)
                                         .withNetwork(red)
+                                        .withExposedPorts(8080)
                                         .withCopyFileToContainer(war,PATH_TO_PAYARA_SERVER_WAR) 
-                                        .waitingFor(Wait.forLogMessage(PAYARA_SERVER_FULL_LOG,1))
-                                        .withExposedPorts(8080);
+                                        .waitingFor(Wait.forLogMessage(PAYARA_SERVER_FULL_LOG,1));
+                                        
 
     
     /**
@@ -121,12 +118,7 @@ public class ComercioIT {
                     .get();
         estado = respuesta.getStatus();
         System.out.println("El estado de la peticion fallida es " + estado);
-        Assertions.assertEquals(404,estado);
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory(NOMBRE_PU);
-        EntityManager em = emf.createEntityManager();
-        Assertions.assertNotNull(em);
-        em.close();
-       
+        Assertions.assertEquals(404,estado); 
     }
 
     /**
@@ -134,7 +126,6 @@ public class ComercioIT {
      *
      * @see Comercio
      */
-    /*
     @Order(1)
     @Test
     public void crearTest() {
@@ -147,14 +138,14 @@ public class ComercioIT {
         Response respuesta = target.path("/comercio").request(MediaType.APPLICATION_JSON)
                 .post(Entity.entity(creado, MediaType.APPLICATION_JSON));
         Assertions.assertEquals(esperado, respuesta.getStatus());
-        //Assertions.assertTrue(respuesta.getHeaders().containsKey("location"));
-       // idComercioCreado = Long.valueOf(respuesta.getHeaderString("location").split("comercio/")[1]);
-       // Assertions.assertNotNull(idComercioCreado);
+        Assertions.assertTrue(respuesta.getHeaders().containsKey("location"));
+        idComercioCreado = Long.valueOf(respuesta.getHeaderString("location").split("comercio/")[1]);
+        Assertions.assertNotNull(idComercioCreado);
         //validar excepciones
-        respuesta = target.path("comercio").request(MediaType.APPLICATION_JSON)
+        respuesta = target.path("/comercio").request(MediaType.APPLICATION_JSON)
                 .post(Entity.json(null));
         Assertions.assertEquals(400, respuesta.getStatus());
-    }*/
+    }
 
     /**
      * Busca un comercio por su Identificador
