@@ -21,7 +21,7 @@ public class Constantes {
     public static final String PAYARA_SERVER_FULL_LOG=".*JMXStartupService has started JMXConnector on JMXService.*";
     public static final String PAYARA_MICRO_LOG=".* Payara Micro .* ready in .*\\s";
     public static final String PATH_TO_PAYARA_SERVER_WAR="/opt/payara/deployments/aplicacion.war";
-    
+    public static final String IMAGE_DELIVERY_SERVER="delivery_payara/full:6.2023.3-jdk17";
     
     
     

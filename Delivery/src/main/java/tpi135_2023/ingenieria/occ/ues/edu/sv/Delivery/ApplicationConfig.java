@@ -27,7 +27,7 @@ import jakarta.ws.rs.core.Application;
         className = "org.postgresql.ds.PGSimpleDataSource",
         user = "postgres",        
         password = "abc123",
-        url = "jdbc:postgresql://postgres:5432/delivery",
+        url = "jdbc:postgresql://db:5432/delivery",
         properties = {
             "allowPublicKeyRetrieval=true",
             "useSSL=false",

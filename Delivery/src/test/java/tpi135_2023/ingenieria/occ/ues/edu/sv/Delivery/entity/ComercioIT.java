@@ -73,12 +73,12 @@ public class ComercioIT {
                                         .withUsername(DB_USER)
                                         .withInitScript(SCRIT_INIT_DB)
                                         .withNetwork(red)
-                                        .withNetworkAliases("postgres")
+                                        .withNetworkAliases("db")
                                         .withExposedPorts(5432);
 
 
     @Container
-    static GenericContainer payara = new GenericContainer("delivery-prueba:1")
+    static GenericContainer payara = new GenericContainer(IMAGE_DELIVERY_SERVER)
                                         .dependsOn(postgres)
                                         .withNetwork(red)
                                         .withExposedPorts(8080)
