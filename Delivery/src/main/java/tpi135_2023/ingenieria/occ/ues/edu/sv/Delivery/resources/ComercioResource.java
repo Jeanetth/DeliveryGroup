@@ -78,7 +78,7 @@ public class ComercioResource implements Serializable {
                 }
             }
     
-    
+    //SE VALIDA TIPO VACIO Y TIPO LLENO - MISMO METODO PARA AMBAS PRUEBAS
     @Path("/{id}/tipocomercio")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
