@@ -7,6 +7,7 @@ package tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.resources;
 import jakarta.inject.Inject;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -21,7 +22,9 @@ import java.util.logging.Logger;
 import static tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern.NULL_PARAMETER;
 import static tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern.WRONG_PARAMETER;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.ComercioBean;
+import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.TipoComercioBean;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Comercio;
+import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.TipoComercio;
 
 /**
  *
@@ -56,4 +59,7 @@ public class ComercioResource implements Serializable {
                 .header(NULL_PARAMETER, null).build();
     }
     
+    
+    
+  
 }

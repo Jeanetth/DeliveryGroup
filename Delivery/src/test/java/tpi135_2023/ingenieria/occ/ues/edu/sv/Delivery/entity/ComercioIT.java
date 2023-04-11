@@ -175,9 +175,9 @@ public class ComercioIT {
      *
      * @see TipoComercio
      */
-    /*@Order(3)
+    @Order(2)
     @Test
-    /*public void crearTipoComercioTest() {
+    public void crearTipoComercioTest() {
         System.out.println("Comercio - crearTipoComercio");
         Assertions.assertTrue(payara.isRunning());
         int esperado = Response.Status.CREATED.getStatusCode();
@@ -348,10 +348,6 @@ public class ComercioIT {
     }
     */
     
-    @Test
-    public void funciono(){
-        System.out.println("FUNCIONO");
-    }
     @AfterAll
     public static void cerrarConteiner(){
         postgres.stop();
