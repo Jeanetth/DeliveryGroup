@@ -1,6 +1,5 @@
 /home/moimo98/NetBeansProjects/DeliveryGroup/Delivery/src/main/java/tpi135_2023/ingenieria/occ/ues/edu/sv/Delivery/entity/EntregaHistorial.java
 /home/moimo98/NetBeansProjects/DeliveryGroup/Delivery/src/main/java/tpi135_2023/ingenieria/occ/ues/edu/sv/Delivery/entity/Comercio.java
-/home/moimo98/NetBeansProjects/DeliveryGroup/Delivery/src/main/java/tpi135_2023/ingenieria/occ/ues/edu/sv/Delivery/resources/RestResource.java
 /home/moimo98/NetBeansProjects/DeliveryGroup/Delivery/src/main/java/tpi135_2023/ingenieria/occ/ues/edu/sv/Delivery/entity/TipoProductoTipoComercioPK.java
 /home/moimo98/NetBeansProjects/DeliveryGroup/Delivery/src/main/java/tpi135_2023/ingenieria/occ/ues/edu/sv/Delivery/control/TipoComercioBean.java
 /home/moimo98/NetBeansProjects/DeliveryGroup/Delivery/src/main/java/tpi135_2023/ingenieria/occ/ues/edu/sv/Delivery/entity/Cliente.java
@@ -33,6 +32,5 @@
 /home/moimo98/NetBeansProjects/DeliveryGroup/Delivery/src/main/java/tpi135_2023/ingenieria/occ/ues/edu/sv/Delivery/ApplicationConfig.java
 /home/moimo98/NetBeansProjects/DeliveryGroup/Delivery/src/main/java/tpi135_2023/ingenieria/occ/ues/edu/sv/Delivery/entity/Pago.java
 /home/moimo98/NetBeansProjects/DeliveryGroup/Delivery/src/main/java/tpi135_2023/ingenieria/occ/ues/edu/sv/Delivery/control/SucursalBean.java
-/home/moimo98/NetBeansProjects/DeliveryGroup/Delivery/src/main/java/tpi135_2023/ingenieria/occ/ues/edu/sv/Delivery/resources/HelloRecord.java
 /home/moimo98/NetBeansProjects/DeliveryGroup/Delivery/src/main/java/tpi135_2023/ingenieria/occ/ues/edu/sv/Delivery/entity/ProductoTipoProducto.java
 /home/moimo98/NetBeansProjects/DeliveryGroup/Delivery/src/main/java/tpi135_2023/ingenieria/occ/ues/edu/sv/Delivery/entity/ProductoTipoProductoPK.java

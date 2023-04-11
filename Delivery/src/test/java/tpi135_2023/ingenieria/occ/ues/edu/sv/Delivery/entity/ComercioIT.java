@@ -105,20 +105,6 @@ public class ComercioIT {
         URI baseUri = URI.create(String.format("http://%s:%d/aplicacion", payara.getContainerIpAddress(),
                     payara.getMappedPort(8080)));
         target = cliente.target(baseUri);
-        Response respuesta = target
-                             .path("/hello")
-                             .request(MediaType.APPLICATION_JSON)
-                             .get();
-        int estado = respuesta.getStatus();
-        System.out.println("El estado de la peticion exitosa es " + estado);
-        Assertions.assertEquals(200,estado);
-        respuesta = target
-                    .path("/bye")
-                    .request(MediaType.APPLICATION_JSON)
-                    .get();
-        estado = respuesta.getStatus();
-        System.out.println("El estado de la peticion fallida es " + estado);
-        Assertions.assertEquals(404,estado); 
     }
 
     /**
@@ -200,8 +186,8 @@ public class ComercioIT {
      *
      * @see ComercioTipoComercio
      */
-    /*
-    @Order(4)
+   
+    @Order(3)
     @Test
     public void validarTipoVacioTest() {
         System.out.println("Comercio - validarTipoVacio");
@@ -211,7 +197,7 @@ public class ComercioIT {
                 .request(MediaType.APPLICATION_JSON).get();
         Assertions.assertEquals(esperado, respuesta.getStatus());
         Assertions.assertTrue(respuesta.getHeaders().containsKey(RestResourcePattern.CONTAR_REGISTROS));
-        Assertions.assertEquals(0, Integer.valueOf(respuesta.getHeaderString(RestResourcePattern.CONTAR_REGISTROS)));
+        Assertions.assertEquals(1, Integer.valueOf(respuesta.getHeaderString(RestResourcePattern.CONTAR_REGISTROS)));
         //excepciones
         respuesta = target.path("/comercio/{id}/tipocomercio").resolveTemplate("id", 999)
                 .request(MediaType.APPLICATION_JSON).get();

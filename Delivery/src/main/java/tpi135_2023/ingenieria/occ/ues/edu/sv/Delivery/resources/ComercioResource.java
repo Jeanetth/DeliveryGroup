@@ -10,6 +10,7 @@ import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
@@ -19,6 +20,8 @@ import jakarta.ws.rs.core.UriInfo;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern.CONTAR_REGISTROS;
+import static tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern.ID_NOT_FOUND;
 import static tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern.NULL_PARAMETER;
 import static tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern.WRONG_PARAMETER;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.ComercioBean;
@@ -33,7 +36,7 @@ import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.TipoComercio;
 @Path("/comercio")
 public class ComercioResource implements Serializable {
     @Inject
-    ComercioBean comerciobean;
+    ComercioBean comercioBean;
     //CREAR COMERCIO-----------------------------------------------------------------------------
 
     @POST
@@ -43,7 +46,7 @@ public class ComercioResource implements Serializable {
 
         if (comercio != null) {
             try {
-                comerciobean.crear(comercio);
+                comercioBean.crear(comercio);
 
                 if (comercio.getIdComercio() != null) {
                     UriBuilder uriBuilder = info.getAbsolutePathBuilder();
@@ -59,7 +62,29 @@ public class ComercioResource implements Serializable {
                 .header(NULL_PARAMETER, null).build();
     }
     
-    
-    
+    @Path("/{id}/tipocomercio")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response obtenerTipocomercio(@PathParam("id") Long idComercio){
+       
+        if(idComercio!= null){
+            Comercio c = comercioBean.findById(idComercio);
+            
+            if(c!=null){
+            
+                Long contarResgistros = comercioBean.contar();
+                return Response.ok(c).header(CONTAR_REGISTROS,contarResgistros).build();
+                
+            }
+            return Response.status(404)
+                .header(ID_NOT_FOUND, idComercio).build();
+        
+        }
+        
+        
+        return Response.status(400).header(NULL_PARAMETER, null).build();
+        
+        
+    }
   
 }
