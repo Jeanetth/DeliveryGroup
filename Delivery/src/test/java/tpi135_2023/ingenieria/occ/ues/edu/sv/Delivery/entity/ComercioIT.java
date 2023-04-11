@@ -136,7 +136,7 @@ public class ComercioIT {
     /**
      * Busca un comercio por su Identificador
      */
-    /*
+    
     @Order(2)
     @Test
     public void findByIdTest() {
@@ -161,7 +161,7 @@ public class ComercioIT {
      *
      * @see TipoComercio
      */
-    @Order(2)
+    @Order(3)
     @Test
     public void crearTipoComercioTest() {
         System.out.println("Comercio - crearTipoComercio");
@@ -187,7 +187,7 @@ public class ComercioIT {
      * @see ComercioTipoComercio
      */
    
-    @Order(3)
+    @Order(4)
     @Test
     public void validarTipoVacioTest() {
         System.out.println("Comercio - validarTipoVacio");
@@ -242,7 +242,7 @@ public class ComercioIT {
      * @see ComercioTipoComercio
      */
     /*
-    @Order(6)
+    @Order(5)
     @Test
     public void validarTipoLlenoTest() {
         System.out.println("Comercio - validarTipoLleno");

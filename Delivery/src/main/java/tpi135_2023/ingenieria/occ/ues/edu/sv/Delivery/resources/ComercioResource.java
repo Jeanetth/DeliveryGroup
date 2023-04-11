@@ -20,6 +20,7 @@ import jakarta.ws.rs.core.UriInfo;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern;
 import static tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern.CONTAR_REGISTROS;
 import static tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern.ID_NOT_FOUND;
 import static tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern.NULL_PARAMETER;
@@ -61,6 +62,22 @@ public class ComercioResource implements Serializable {
         return Response.status(400)
                 .header(NULL_PARAMETER, null).build();
     }
+    
+                    //METODO FINBYID------------------------------------------------------------------------------
+            @Path("/{id}")
+            @GET   
+            @Produces(MediaType.APPLICATION_JSON)
+            public Response findById(@PathParam("id") Long id) {
+                Comercio comercio = comercioBean.findById(id);//buscar el comercio por su ID en la base de datos o en alguna otra fuente de datos
+                if (comercio == null) {
+                    return Response.status(Response.Status.NOT_FOUND)
+                                   .header(RestResourcePattern.ID_NOT_FOUND, "true")
+                                   .build();
+                } else {
+                    return Response.ok(comercio).build();
+                }
+            }
+    
     
     @Path("/{id}/tipocomercio")
     @GET
