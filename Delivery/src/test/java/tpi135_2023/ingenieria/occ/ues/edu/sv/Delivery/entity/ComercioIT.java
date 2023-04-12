@@ -312,7 +312,7 @@ public class ComercioIT {
         respuestaDireccion = target.path("direccion").request(MediaType.APPLICATION_JSON)
                 .post(Entity.json(null));
         Assertions.assertEquals(400, respuestaDireccion.getStatus());
-/*
+
         //asociar direccion a sucursal
         Sucursal s = new Sucursal();
         s.setIdComercio(new Comercio(idComercioCreado));
@@ -330,7 +330,7 @@ public class ComercioIT {
                 .resolveTemplate("idComercio", 9999)
                 .request(MediaType.APPLICATION_JSON)
                 .post(Entity.entity(s, MediaType.APPLICATION_JSON));
-        Assertions.assertEquals(400, respuestaSucursal.getStatus());*/
+        Assertions.assertEquals(400, respuestaSucursal.getStatus());
     }
     
     

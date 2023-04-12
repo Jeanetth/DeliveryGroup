@@ -18,6 +18,7 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.UriBuilder;
 import jakarta.ws.rs.core.UriInfo;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern;
@@ -26,8 +27,10 @@ import static tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResour
 import static tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern.NULL_PARAMETER;
 import static tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern.WRONG_PARAMETER;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.ComercioBean;
+import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.SucursalBean;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.TipoComercioBean;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Comercio;
+import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Sucursal;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.TipoComercio;
 
 /**
@@ -38,6 +41,9 @@ import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.TipoComercio;
 public class ComercioResource implements Serializable {
     @Inject
     ComercioBean comercioBean;
+    
+    @Inject
+    SucursalBean sucursalBean;
     //CREAR COMERCIO-----------------------------------------------------------------------------
 
     @POST
@@ -102,6 +108,42 @@ public class ComercioResource implements Serializable {
         return Response.status(400).header(NULL_PARAMETER, null).build();
         
         
+    }
+    
+    
+    //RESOURCE CREARSUCURSAL 
+    //PREVIAMENTE YA CREADO EL RESOURCE DE  TERRITORIOS Y DIRECCION)
+    
+     @Path("/{idComercio}/sucursal")
+    @POST
+    @Produces({MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
+    public Response crearnuevaSucursal(@PathParam(value="idComercio")Long idcomercio, Sucursal sucursal, @Context UriInfo info) {
+
+        if (sucursal != null) {
+            try {
+               
+                sucursal.setIdComercio(comercioBean.findById(idcomercio));
+                     
+         
+               sucursal.setIdDireccion( BigInteger.valueOf(idcomercio));
+                sucursal.setPathLogo("URL de la imagen del logo");
+                sucursalBean.crear(sucursal);
+
+                if (sucursal.getIdSucursal() != null && comercioBean.findById(idcomercio)!=null) {
+                    UriBuilder uriBuilder = info.getAbsolutePathBuilder();
+                    uriBuilder.path(sucursal.getIdSucursal().toString());
+                    return Response.created(uriBuilder.build()).build();
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(getClass().getName()).log(Level.SEVERE, ex.getMessage(), ex);
+            }
+            return Response.status(400).header(WRONG_PARAMETER, JsonbBuilder.create().toJson(sucursal)).build();
+        }
+        
+        
+       return Response.status(400)
+               .header(NULL_PARAMETER, null).build();
     }
   
 }
