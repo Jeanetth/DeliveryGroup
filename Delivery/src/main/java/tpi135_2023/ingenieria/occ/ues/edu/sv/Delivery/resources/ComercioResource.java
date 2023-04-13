@@ -27,6 +27,7 @@ import static tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResour
 import static tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern.NULL_PARAMETER;
 import static tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern.WRONG_PARAMETER;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.ComercioBean;
+import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.ComercioTipoComercioBean;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.SucursalBean;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.TipoComercioBean;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Comercio;
@@ -44,8 +45,11 @@ public class ComercioResource implements Serializable {
     
     @Inject
     SucursalBean sucursalBean;
+    
+    @Inject
+    ComercioTipoComercioBean ctcBean;
     //CREAR COMERCIO-----------------------------------------------------------------------------
-
+    
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
@@ -70,19 +74,19 @@ public class ComercioResource implements Serializable {
     }
     
                     //METODO FINBYID------------------------------------------------------------------------------
-            @Path("/{id}")
-            @GET   
-            @Produces(MediaType.APPLICATION_JSON)
-            public Response findById(@PathParam("id") Long id) {
-                Comercio comercio = comercioBean.findById(id);//buscar el comercio por su ID en la base de datos o en alguna otra fuente de datos
-                if (comercio == null) {
-                    return Response.status(Response.Status.NOT_FOUND)
-                                   .header(RestResourcePattern.ID_NOT_FOUND, "true")
-                                   .build();
-                } else {
-                    return Response.ok(comercio).build();
-                }
-            }
+    @Path("/{id}")
+    @GET   
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response findById(@PathParam("id") Long id) {
+        Comercio comercio = comercioBean.findById(id);//buscar el comercio por su ID en la base de datos o en alguna otra fuente de datos
+        if (comercio == null) {
+            return Response.status(Response.Status.NOT_FOUND)
+                  .header(RestResourcePattern.ID_NOT_FOUND, "true")
+                  .build();
+        } else {
+            return Response.ok(comercio).build();
+        }
+    }
     
     //SE VALIDA TIPO VACIO Y TIPO LLENO - MISMO METODO PARA AMBAS PRUEBAS
     @Path("/{id}/tipocomercio")
@@ -95,7 +99,7 @@ public class ComercioResource implements Serializable {
             
             if(c!=null){
             
-                Long contarResgistros = comercioBean.contar();
+                Long contarResgistros = ctcBean.contar();
                 return Response.ok(c).header(CONTAR_REGISTROS,contarResgistros).build();
                 
             }
