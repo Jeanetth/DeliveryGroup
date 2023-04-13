@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.ComercioIT
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 63.192 s - in tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.ComercioIT
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 64.132 s - in tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.ComercioIT

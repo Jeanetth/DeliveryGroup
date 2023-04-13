@@ -25,12 +25,14 @@ import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePatte
 import static tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern.CONTAR_REGISTROS;
 import static tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern.ID_NOT_FOUND;
 import static tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern.NULL_PARAMETER;
+import static tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern.PARAMETROS_FALTANTES;
 import static tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern.WRONG_PARAMETER;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.ComercioBean;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.ComercioTipoComercioBean;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.SucursalBean;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.TipoComercioBean;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Comercio;
+import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.ComercioTipoComercio;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Sucursal;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.TipoComercio;
 
@@ -48,6 +50,10 @@ public class ComercioResource implements Serializable {
     
     @Inject
     ComercioTipoComercioBean ctcBean;
+    
+    @Inject
+    TipoComercioBean tipoComerciobean;
+    
     //CREAR COMERCIO-----------------------------------------------------------------------------
     
     @POST
@@ -114,11 +120,41 @@ public class ComercioResource implements Serializable {
         
     }
     
-    
+    @Path("/comercio/{idComercio}/tipocomercio/{idTipoComercio}")
+    @POST
+    @Produces({MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
+    public Response agregarTipoAcomercio(@PathParam("idComercio")Long idComercio,
+                                         @PathParam("idTipoComercio")Long idTipoComercio){
+    /*
+        if(idComercio!=null && idTipoComercio!=null){
+            
+            Comercio c = comercioBean.findById(idComercio);
+            TipoComercio tp = tipoComerciobean.findById(idTipoComercio);
+            
+            if(c!=null && tp!=null){
+            
+            ComercioTipoComercio ctp = new ComercioTipoComercio();
+            
+            ctp.setComercio(c);
+            ctp.setTipoComercio(tp);
+            
+            ctcBean.crear(ctp);
+            
+            return Response.status(Response.Status.CREATED).build();
+            
+            }
+            
+            return Response.status(400).header(WRONG_PARAMETER, null).build();
+        
+        }*/
+        
+        return Response.status(404).header(PARAMETROS_FALTANTES, null).build();
+    }
     //RESOURCE CREARSUCURSAL 
     //PREVIAMENTE YA CREADO EL RESOURCE DE  TERRITORIOS Y DIRECCION)
     
-     @Path("/{idComercio}/sucursal")
+    @Path("/{idComercio}/sucursal")
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
