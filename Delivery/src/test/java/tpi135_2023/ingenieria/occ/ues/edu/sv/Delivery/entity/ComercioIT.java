@@ -211,7 +211,7 @@ public class ComercioIT {
      *
      * @see ComercioTipoComercio
      */
-    /*
+    
     @Order(5)
     @Test
     public void agregarTipoAComercio() {
@@ -241,8 +241,8 @@ public class ComercioIT {
      *
      * @see ComercioTipoComercio
      */
-    /*
-    @Order(5)
+    
+    @Order(6)
     @Test
     public void validarTipoLlenoTest() {
         System.out.println("Comercio - validarTipoLleno");
@@ -264,7 +264,7 @@ public class ComercioIT {
      * @see Sucursal
      */
     
-    @Order(5)
+    @Order(7)
     @Test
     public void crearSucursalTest() {
         System.out.println("Comercio - crearSucursal");

@@ -19,6 +19,7 @@ import jakarta.ws.rs.core.UriBuilder;
 import jakarta.ws.rs.core.UriInfo;
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern;
@@ -33,6 +34,7 @@ import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.SucursalBean;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.control.TipoComercioBean;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Comercio;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.ComercioTipoComercio;
+import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.ComercioTipoComercioPK;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Sucursal;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.TipoComercio;
 
@@ -120,13 +122,13 @@ public class ComercioResource implements Serializable {
         
     }
     
-    @Path("/comercio/{idComercio}/tipocomercio/{idTipoComercio}")
+    @Path("/{idComercio}/tipocomercio/{idTipoComercio}")
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
     public Response agregarTipoAcomercio(@PathParam("idComercio")Long idComercio,
-                                         @PathParam("idTipoComercio")Long idTipoComercio){
-    /*
+                                         @PathParam("idTipoComercio")Integer idTipoComercio){
+    
         if(idComercio!=null && idTipoComercio!=null){
             
             Comercio c = comercioBean.findById(idComercio);
@@ -134,12 +136,17 @@ public class ComercioResource implements Serializable {
             
             if(c!=null && tp!=null){
             
-            ComercioTipoComercio ctp = new ComercioTipoComercio();
+            ComercioTipoComercio ctc = new ComercioTipoComercio();
+            ComercioTipoComercioPK ctcPK = new ComercioTipoComercioPK(idComercio.intValue(),idTipoComercio.intValue());
             
-            ctp.setComercio(c);
-            ctp.setTipoComercio(tp);
             
-            ctcBean.crear(ctp);
+            
+            ctc.setComercio(c);
+            ctc.setTipoComercio(tp);
+            ctc.setFechaCreacion(new Date());
+            ctc.setActivo(Boolean.TRUE);
+            ctc.setComercioTipoComercioPK(ctcPK);
+            ctcBean.crear(ctc);
             
             return Response.status(Response.Status.CREATED).build();
             
@@ -147,7 +154,7 @@ public class ComercioResource implements Serializable {
             
             return Response.status(400).header(WRONG_PARAMETER, null).build();
         
-        }*/
+        }
         
         return Response.status(404).header(PARAMETROS_FALTANTES, null).build();
     }

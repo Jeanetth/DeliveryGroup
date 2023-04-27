@@ -19,18 +19,15 @@ import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.TipoComercio;
 @Stateless
 @LocalBean
 public class TipoComercioBean extends AbstractDataAccess<TipoComercio> implements Serializable{
-    
     @PersistenceContext(unitName = NOMBRE_PU)
     EntityManager em;
     
-    @Override      
-    EntityManager getEntityManager() {
-        return em;
-    }
-
-    public TipoComercioBean() {
-        super(TipoComercio.class);
-    }
     
-    
+    @Override 
+    EntityManager getEntityManager(){
+        return em ;
+    }
+    public TipoComercioBean(){
+    super(  TipoComercio.class );
+ }
 }
