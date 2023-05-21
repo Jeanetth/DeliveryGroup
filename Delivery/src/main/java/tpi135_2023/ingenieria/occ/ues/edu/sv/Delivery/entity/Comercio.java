@@ -4,6 +4,7 @@
  */
 package tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity;
 
+import jakarta.json.bind.annotation.JsonbTransient;
 import java.io.Serializable;
 import java.util.Collection;
 import jakarta.persistence.Basic;
@@ -96,29 +97,29 @@ public class Comercio implements Serializable {
         this.descripcion = descripcion;
     }
 
-    @XmlTransient
+    @JsonbTransient
     public Collection<ComercioTipoComercio> getComercioTipoComercioCollection() {
         return comercioTipoComercioCollection;
     }
-
+    @JsonbTransient
     public void setComercioTipoComercioCollection(Collection<ComercioTipoComercio> comercioTipoComercioCollection) {
         this.comercioTipoComercioCollection = comercioTipoComercioCollection;
     }
 
-    @XmlTransient
+    @JsonbTransient
     public Collection<ProductoComercio> getProductoComercioCollection() {
         return productoComercioCollection;
     }
-
+    @JsonbTransient
     public void setProductoComercioCollection(Collection<ProductoComercio> productoComercioCollection) {
         this.productoComercioCollection = productoComercioCollection;
     }
 
-    @XmlTransient
+    @JsonbTransient
     public Collection<Sucursal> getSucursalCollection() {
         return sucursalCollection;
     }
-
+    @JsonbTransient
     public void setSucursalCollection(Collection<Sucursal> sucursalCollection) {
         this.sucursalCollection = sucursalCollection;
     }

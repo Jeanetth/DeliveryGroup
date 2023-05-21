@@ -96,6 +96,7 @@ public abstract class AbstractDataAccess<T> implements Serializable {
         }
     }
     
+    
    public T findById( Object id) throws IllegalArgumentException, IllegalStateException {
         if (id != null) {
             EntityManager em = null;

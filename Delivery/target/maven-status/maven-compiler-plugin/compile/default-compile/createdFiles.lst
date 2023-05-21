@@ -36,6 +36,7 @@ tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Producto.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\ApplicationConfig.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\ProductoTipoProductoPK.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\ProductoComercio.class
+tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\resources\ListaComercioResource.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\control\DireccionBean.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Factura.class
 tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\OrdenDetallePK.class
