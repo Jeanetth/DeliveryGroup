@@ -20,6 +20,7 @@ import jakarta.ws.rs.core.UriInfo;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.boundary.RestResourcePattern;
@@ -79,6 +80,22 @@ public class ComercioResource implements Serializable {
         }
         return Response.status(400)
                 .header(NULL_PARAMETER, null).build();
+    }
+    
+    
+                        //METODO FINd ALL------------------------------------------------------------------------------
+   @Path("/all")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response eocntrartodos() {
+        List<Comercio> registros = comercioBean.findAll();
+        Long total = comercioBean.contar();
+        return Response.ok(registros)
+                .header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+                .header("Access-Control-Allow-Headers", "Content-Type")
+                .header("total registros", total)
+                .build();
     }
     
                     //METODO FINBYID------------------------------------------------------------------------------
@@ -174,7 +191,7 @@ public class ComercioResource implements Serializable {
                      
          
                sucursal.setIdDireccion( BigInteger.valueOf(idcomercio));
-                sucursal.setPathLogo("URL de la imagen del logo");
+          
                 sucursalBean.crear(sucursal);
 
                 if (sucursal.getIdSucursal() != null && comercioBean.findById(idcomercio)!=null) {

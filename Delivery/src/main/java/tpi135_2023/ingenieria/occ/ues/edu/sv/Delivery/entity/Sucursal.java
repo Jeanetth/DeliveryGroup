@@ -4,6 +4,7 @@
  */
 package tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity;
 
+import jakarta.json.bind.annotation.JsonbTransient;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Collection;
@@ -59,6 +60,9 @@ public class Sucursal implements Serializable {
     @ManyToOne
     private Comercio idComercio;
     @OneToMany(mappedBy = "idSucursal")
+    
+    
+    @JsonbTransient
     private Collection<Orden> ordenCollection;
 
     public Sucursal() {

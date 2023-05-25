@@ -52,10 +52,16 @@ public class Comercio implements Serializable {
     @Column(name = "descripcion")
     private String descripcion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "comercio")
+    
+    @JsonbTransient
     private Collection<ComercioTipoComercio> comercioTipoComercioCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "comercio")
+     
+    @JsonbTransient
     private Collection<ProductoComercio> productoComercioCollection;
     @OneToMany(mappedBy = "idComercio")
+    
+    @JsonbTransient
     private Collection<Sucursal> sucursalCollection;
 
     public Comercio() {
@@ -97,29 +103,31 @@ public class Comercio implements Serializable {
         this.descripcion = descripcion;
     }
 
-    @JsonbTransient
+  @XmlTransient
     public Collection<ComercioTipoComercio> getComercioTipoComercioCollection() {
         return comercioTipoComercioCollection;
     }
-    @JsonbTransient
+    
+
     public void setComercioTipoComercioCollection(Collection<ComercioTipoComercio> comercioTipoComercioCollection) {
         this.comercioTipoComercioCollection = comercioTipoComercioCollection;
     }
 
-    @JsonbTransient
+    @XmlTransient
     public Collection<ProductoComercio> getProductoComercioCollection() {
         return productoComercioCollection;
     }
-    @JsonbTransient
+    
+
     public void setProductoComercioCollection(Collection<ProductoComercio> productoComercioCollection) {
         this.productoComercioCollection = productoComercioCollection;
     }
 
-    @JsonbTransient
+   @XmlTransient
     public Collection<Sucursal> getSucursalCollection() {
         return sucursalCollection;
     }
-    @JsonbTransient
+
     public void setSucursalCollection(Collection<Sucursal> sucursalCollection) {
         this.sucursalCollection = sucursalCollection;
     }

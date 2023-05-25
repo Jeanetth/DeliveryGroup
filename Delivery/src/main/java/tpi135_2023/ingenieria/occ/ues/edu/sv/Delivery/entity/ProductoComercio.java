@@ -4,6 +4,7 @@
  */
 package tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity;
 
+import jakarta.json.bind.annotation.JsonbTransient;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -51,6 +52,8 @@ public class ProductoComercio implements Serializable {
     @ManyToOne(optional = false)
     private Producto producto;
     @OneToMany(mappedBy = "productoComercio")
+    
+    @JsonbTransient
     private Collection<MenuComercio> menuComercioCollection;
 
     public ProductoComercio() {

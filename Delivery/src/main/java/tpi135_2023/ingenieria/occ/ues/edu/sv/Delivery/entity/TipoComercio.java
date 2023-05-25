@@ -4,6 +4,7 @@
  */
 package tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity;
 
+import jakarta.json.bind.annotation.JsonbTransient;
 import java.io.Serializable;
 import java.util.Collection;
 import jakarta.persistence.Basic;
@@ -53,13 +54,21 @@ public class TipoComercio implements Serializable {
     @Column(name = "comentarios")
     private String comentarios;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoComercio")
+    
+       @JsonbTransient
     private Collection<ComercioTipoComercio> comercioTipoComercioCollection;
     @OneToMany(mappedBy = "idTipoComercioPadre")
+    
+       @JsonbTransient
     private Collection<TipoComercio> tipoComercioCollection;
     @JoinColumn(name = "id_tipo_comercio_padre", referencedColumnName = "id_tipo_comercio")
     @ManyToOne
+    
+       @JsonbTransient
     private TipoComercio idTipoComercioPadre;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoComercio")
+    
+       @JsonbTransient
     private Collection<TipoProductoTipoComercio> tipoProductoTipoComercioCollection;
 
     public TipoComercio() {

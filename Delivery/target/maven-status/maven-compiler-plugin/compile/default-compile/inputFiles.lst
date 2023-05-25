@@ -1,42 +1,47 @@
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\control\ComercioTipoComercioBean.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\control\DireccionBean.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Cliente.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\OrdenEstado.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\TipoProducto.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\resources\ListaComercioResource.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\control\AbstractDataAccess.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\EntregaHistorial.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\resources\DireccionResource.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\MenuComercio.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\TipoComercio.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\ProductoComercio.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\ApplicationConfig.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\control\SucursalBean.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\boundary\Constantes.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\OrdenDetallePK.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\ProductoComercioPK.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\ProductoTipoProducto.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Vehiculo.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Orden.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\resources\TipoComercioResource.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\boundary\RestResourcePattern.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Repartidor.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\control\ComercioBean.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\control\TipoComercioBean.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Entrega.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Pago.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Sucursal.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\resources\TerritorioResource.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\OrdenDetalle.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Territorio.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\ProductoTipoProductoPK.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Comercio.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\ComercioTipoComercioPK.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Factura.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\TipoProductoTipoComercio.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Direccion.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\TipoProductoTipoComercioPK.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\control\TerritorioBean.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\resources\ComercioResource.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\ComercioTipoComercio.java
-C:\Users\Mariana\OneDrive\Documentos\NetBeansProjects\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Producto.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\control\DireccionBean.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\OrdenDetalle.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\MenuComercio.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\boundary\Constantes.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\ProductoComercioPK.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\OrdenDetallePK.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Comercio.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Factura.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\ProductoTipoProductoPK.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\control\AbstractDataAccess.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Vehiculo.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\control\ComercioTipoComercioBean.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\ApplicationConfig.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\TipoProducto.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\ComercioTipoComercioPK.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Cliente.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\TipoComercio.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\resources\TerritorioResource.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Repartidor.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\resources\ListaSucursales.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Producto.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\ProductoComercio.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\resources\DireccionResource.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\resources\ListaProductoComercio.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\ProductoTipoProducto.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\control\SucursalBean.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Sucursal.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\control\ProductoBean.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\TipoProductoTipoComercioPK.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\resources\ComercioResource.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\control\TipoComercioBean.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\boundary\RestResourcePattern.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\resources\TipoComercioResource.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\control\ProductoComercioBean.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\resources\ListaComercioTipoComercio.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Direccion.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\control\ComercioBean.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\ComercioTipoComercio.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\OrdenEstado.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Territorio.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\control\TerritorioBean.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\resources\ProductoResource.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Entrega.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Orden.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\TipoProductoTipoComercio.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\EntregaHistorial.java
+C:\Users\USER\3D Objects\DeliveryPruebas\DeliveryGroup\Delivery\src\main\java\tpi135_2023\ingenieria\occ\ues\edu\sv\Delivery\entity\Pago.java
