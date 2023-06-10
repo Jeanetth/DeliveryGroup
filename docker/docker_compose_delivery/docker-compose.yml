@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres:13-alpine
+    container_name: db
+    environment:
+      POSTGRES_PASSWORD: abc123
+      POSTGRES_USER: postgres
+      POSTGRES_DB: delivery
+    ports:
+      - "5432:5432"
+    volumes:
+      - /home/moimo98/NetBeansProjects/DeliveryGroup/Delivery/src/test/resources/iniciarDelivery.sql:/docker-entrypoint-initdb.d/iniciarDelivery.sql
+    networks:
+      - delivery_net
+
+  payara:
+    image: delivery_payara/full:6.2023.3-jdk17
+    ports:
+      - "4848:4848"
+      - "8080:8080"
+      - "8181:8181"
+    depends_on:
+      - postgres
+    networks:
+      - delivery_net
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "tpi@ues.edu.sv"
+      PGADMIN_DEFAULT_PASSWORD: "tpi123"
+    ports:
+      - "80:80"
+    networks:
+      - delivery_net
+volumes:
+  db_data:
+
+networks:
+  delivery_net:
+    external: true
+
