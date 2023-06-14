@@ -21,7 +21,7 @@ import tpi135_2023.ingenieria.occ.ues.edu.sv.Delivery.entity.Comercio;
 public class ComercioBean extends AbstractDataAccess<Comercio> implements Serializable {
     
     
-  @PersistenceContext(unitName = NOMBRE_PU)
+    @PersistenceContext(unitName = NOMBRE_PU)
     EntityManager em;
     
     @Override
